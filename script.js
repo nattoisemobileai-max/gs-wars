@@ -405,3 +405,50 @@ document.addEventListener('DOMContentLoaded', () => {
     window.startApp = startApp;
     window.showLeaderboard = showLeaderboard;
 });
+
+// --- 遊戲狀態管理 ---
+let currentQuestionIndex = 0;
+let score = 0;
+let totalQuestions = QUIZ_DATA.length;
+let selectedOption = null;
+let gameActive = false;
+let userName = 'Smart Boy'; // ***新增：設定預設名稱*** // ... (其他 DOM 元素定義)
+
+// --- 遊戲初始化與啟動 ---
+function startApp() {
+    // ***修改：讀取輸入欄位的值***
+    const nameInput = document.getElementById('user-name-input').value.trim();
+    if (nameInput) {
+        userName = nameInput; // 如果用戶輸入了名字，就更新它
+    }
+    
+    gameActive = true;
+    score = 0;
+    currentQuestionIndex = 0;
+    
+    // 隱藏所有畫面，顯示遊戲畫面
+    welcomeScreen.classList.add('hidden');
+    leaderboardScreen.classList.add('hidden');
+    gameScreen.classList.remove('hidden');
+
+    loadQuestion();
+    // --------------------
+}
+
+// *** 同時修改 endGame() 函式，將 userName 寫入紀錄 ***
+function endGame() {
+    gameActive = false;
+    gameScreen.classList.add('hidden');
+    
+    // 紀錄成績
+    const finalScore = score;
+    const today = new Date().toLocaleDateString('zh-HK');
+    const newRecord = {
+        name: userName, // ***使用儲存的 userName***
+        score: finalScore,
+        date: today
+    };
+
+    saveRecord(newRecord);
+    showLeaderboard(finalScore);
+}
