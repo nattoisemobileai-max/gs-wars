@@ -1,16 +1,13 @@
-// --- 遊戲數據結構 ---
-// 為了保持程式碼整潔，我只列出每輪的前幾題和關鍵的小總結。
-// 你可以將所有 Round 1-4 的題目（超過 40 題）按這個格式加入 QUIZ_DATA 陣列中。
-
+// --- 遊戲數據結構：戰爭與和平 (第6冊 第4課) ---
 const QUIZ_DATA = [
-    // === Round 1: 戰爭是甚麼？ ===
+    // === Round 1: 戰爭是甚麼？ (10 題) ===
     {
         round: 1,
         type: 'mc', // Multiple Choice
         question: 'Q1. 根據課文，戰爭是一種甚麼樣的方法？',
         options: ['和平溝通的方法', '以武力解決紛爭的方法', '體育競賽的方法'],
         answer: '以武力解決紛爭的方法',
-        summary: '戰爭是一種以武力解決紛爭的方法。無論遇到任何糾紛，都不應該用武力解決。',
+        summary: null,
     },
     {
         round: 1,
@@ -23,102 +20,350 @@ const QUIZ_DATA = [
     {
         round: 1,
         type: 'mc',
-        question: 'Q3. 下列哪一個詞語不適合用來形容戰爭？',
-        options: ['殘酷', '幸福', '恐怖'],
-        answer: '幸福',
+        question: 'Q3. 看看課本第 31 頁的圖片，士兵們正在使用甚麼武器？',
+        options: ['水槍', '鮮花', '大炮'],
+        answer: '大炮',
         summary: null,
     },
-    // *** 建議在此處加入更多 Round 1 題目 ***
+    {
+        round: 1,
+        type: 'mc',
+        question: 'Q4. 戰爭會讓人感到甚麼情緒？',
+        options: ['興奮', '快樂', '害怕'],
+        answer: '害怕',
+        summary: null,
+    },
+    {
+        round: 1,
+        type: 'mc',
+        question: 'Q5. 本單元主題「住在地球村」提示我們應該怎樣與世界各地的人相處？',
+        options: ['互相攻擊', '和平共處', '互不理睬'],
+        answer: '和平共處',
+        summary: null,
+    },
+    {
+        round: 1,
+        type: 'tf',
+        question: 'Q6. 戰爭通常是因為人們意見不同，卻選擇用武力來解決。',
+        options: ['正確', '錯誤'],
+        answer: '正確',
+        summary: null,
+    },
+    {
+        round: 1,
+        type: 'mc',
+        question: 'Q7. 戰爭圖片中的環境通常看起來是怎樣的？',
+        options: ['荒涼且危險', '熱鬧且充滿節日氣氛', '整潔且安全'],
+        answer: '荒涼且危險',
+        summary: null,
+    },
+    {
+        round: 1,
+        type: 'mc',
+        question: 'Q8. 下列哪一個詞語**不適合**用來形容戰爭帶來的感覺？',
+        options: ['殘酷', '危險', '無助'],
+        answer: '殘酷', // 這是個陷阱題，殘酷適合，但三個選項中殘酷最貼切，讓學生重新思考
+        // 修正為：
+        question: 'Q8. 下列哪一個詞語**不適合**用來形容戰爭帶來的感覺？',
+        options: ['殘酷', '溫暖', '無助'],
+        answer: '溫暖',
+        summary: null,
+    },
+    {
+        round: 1,
+        type: 'tf',
+        question: 'Q9. 戰爭是一種以非武力手段解決紛爭的行為。',
+        options: ['正確', '錯誤'],
+        answer: '錯誤',
+        summary: null,
+    },
+    {
+        round: 1,
+        type: 'tf',
+        question: 'Q10. 只有大人需要關心戰爭，小學生不需要了解。',
+        options: ['正確', '錯誤'],
+        answer: '錯誤',
+        summary: '恭喜完成 Round 1！小總結：戰爭是一種以武力解決紛爭的方法。無論遇到任何糾紛，都不應該用武力解決。',
+    },
 
-    // === Round 2: 戰火為何燃起？ ===
+    // === Round 2: 戰火為何燃起？ (10 題) ===
     {
         round: 2,
         type: 'mc',
-        question: 'Q4. 「別國對我國豐富的石油虎視眈眈。」這屬於哪一種戰爭起因？',
+        question: 'Q11. 「別國對我國豐富的石油虎視眈眈。」這屬於哪一種戰爭起因？',
         options: ['宗教糾紛', '經濟利益', '領土紛爭'],
         answer: '經濟利益',
-        summary: '領土紛爭、經濟利益、宗教糾紛等都是導致戰爭的主要原因。',
+        summary: null,
     },
     {
         round: 2,
         type: 'mc',
-        question: 'Q5. 第二次世界大戰發生的時間是？',
+        question: 'Q12. 「你我信仰不同，你們必須離開！」這是因為甚麼原因而發生衝突？',
+        options: ['爭奪土地', '擴張勢力', '宗教糾紛'],
+        answer: '宗教糾紛',
+        summary: null,
+    },
+    {
+        round: 2,
+        type: 'mc',
+        question: 'Q13. 第一次世界大戰發生在哪個年份區間？',
         options: ['1914 - 1918 年', '1939 - 1945 年', '2003 - 2011 年'],
-        answer: '1939 - 1945 年',
+        answer: '1914 - 1918 年',
+        summary: null,
+    },
+    {
+        round: 2,
+        type: 'mc',
+        question: 'Q14. 爭奪領土是為了甚麼？',
+        options: ['領土紛爭', '經濟利益', '宗教糾紛'],
+        answer: '領土紛爭',
         summary: null,
     },
     {
         round: 2,
         type: 'tf',
-        question: 'Q6. 越南戰爭持續了多久？ (1955-1975)',
-        options: ['約 4 年', '約 20 年'],
-        answer: '約 20 年',
+        question: 'Q15. 第二次世界大戰發生在 1939-1945 年。',
+        options: ['正確', '錯誤'],
+        answer: '正確',
         summary: null,
     },
-    // *** 建議在此處加入更多 Round 2 題目 ***
+    {
+        round: 2,
+        type: 'mc',
+        question: 'Q16. 南北韓戰爭發生在甚麼時候？',
+        options: ['1950 - 1953 年', '1955 - 1975 年', '1980 - 1988 年'],
+        answer: '1950 - 1953 年',
+        summary: null,
+    },
+    {
+        round: 2,
+        type: 'mc',
+        question: 'Q17. 課本中提到的戰爭裡，哪一場發生的時間**最近**？',
+        options: ['第一次世界大戰', '南北韓戰爭', '伊拉克戰爭'],
+        answer: '伊拉克戰爭',
+        summary: null,
+    },
+    {
+        round: 2,
+        type: 'mc',
+        question: 'Q18. 戰爭起因中的「擴張勢力」是指什麼？',
+        options: ['擴大交友圈', '佔領其他國家', '發展經濟'],
+        answer: '佔領其他國家',
+        summary: null,
+    },
+    {
+        round: 2,
+        type: 'mc',
+        question: 'Q19. 兩伊戰爭是發生在哪兩個國家之間？',
+        options: ['中國與日本', '越南與美國', '伊朗與伊拉克'],
+        answer: '伊朗與伊拉克',
+        summary: null,
+    },
+    {
+        round: 2,
+        type: 'mc',
+        question: 'Q20. 越南戰爭大約持續了多久？',
+        options: ['4 年', '8 年', '20 年'],
+        answer: '20 年',
+        summary: '恭喜完成 Round 2！小總結：領土紛爭、經濟利益、宗教糾紛、擴張勢力等都是導致戰爭的主要原因。',
+    },
 
-    // === Round 3: 戰爭帶來的傷痕 ===
+    // === Round 3: 戰爭帶來的傷痕 (10 題) ===
     {
         round: 3,
         type: 'mc',
-        question: 'Q7. 越南戰爭的「地雷」問題導致農地荒廢，這屬於戰爭的哪一種影響？',
-        options: ['短期影響', '長期影響', '宗教影響'],
-        answer: '長期影響',
-        summary: '戰爭造成龐大的人命傷亡和破壞，並帶來深遠的影響。',
+        question: 'Q21. 伊拉克戰爭造成人命傷亡外，還破壞了供水和電力等甚麼設施？',
+        options: ['高級設施', '基礎設施', '娛樂設施'],
+        answer: '基礎設施',
+        summary: null,
     },
     {
         round: 3,
         type: 'mc',
-        question: 'Q8. 數百萬無家可歸的敘利亞人被稱為甚麼？',
+        question: 'Q22. 越南戰爭的「地雷」問題導致農地荒廢，這屬於戰爭的哪一種影響？',
+        options: ['短期影響', '長期影響', '宗教影響'],
+        answer: '長期影響',
+        summary: null,
+    },
+    {
+        round: 3,
+        type: 'mc',
+        question: 'Q23. 戰爭中的炮火會破壞甚麼珍貴的歷史文化遺產？',
+        options: ['學校的書本', '歷史古蹟和文物', '士兵的制服'],
+        answer: '歷史古蹟和文物',
+        summary: null,
+    },
+    {
+        round: 3,
+        type: 'mc',
+        question: 'Q24. 敘利亞內戰造成大規模流亡潮，這些人被稱為？',
         options: ['移民', '旅客', '難民'],
         answer: '難民',
         summary: null,
     },
     {
         round: 3,
+        type: 'mc',
+        question: 'Q25. 難民因為親人失散，會承受巨大的哪種創傷？',
+        options: ['身體創傷', '心靈創傷', '經濟創傷'],
+        answer: '心靈創傷',
+        summary: null,
+    },
+    {
+        round: 3,
         type: 'tf',
-        question: 'Q9. 戰爭只會造成士兵的傷亡，對普通市民的生活設施完全沒有影響。',
+        question: 'Q26. 戰爭只會造成士兵的傷亡，對普通市民的房屋沒有影響。',
         options: ['正確', '錯誤'],
         answer: '錯誤',
         summary: null,
     },
-    // *** 建議在此處加入更多 Round 3 題目 ***
+    {
+        round: 3,
+        type: 'mc',
+        question: 'Q27. 越南農夫不敢在土地上耕種的主要原因是？',
+        options: ['政府禁止', '害怕地雷爆炸', '泥土太肥沃'],
+        answer: '害怕地雷爆炸',
+        summary: null,
+    },
+    {
+        round: 3,
+        type: 'mc',
+        question: 'Q28. 戰爭會導致自然環境被破壞，其中一個例子是？',
+        options: ['大量農地荒廢', '樹木被種植', '空氣變清新'],
+        answer: '大量農地荒廢',
+        summary: null,
+    },
+    {
+        round: 3,
+        type: 'tf',
+        question: 'Q29. 難民流亡潮發生時，他們面對的最大問題通常是親人失散和心靈創傷。',
+        options: ['正確', '錯誤'],
+        answer: '正確',
+        summary: null,
+    },
+    {
+        round: 3,
+        type: 'mc',
+        question: 'Q30. 戰爭的哪一種影響會持續數十年，甚至上百年？',
+        options: ['設施破壞', '地雷和未爆彈', '士兵疲勞'],
+        answer: '地雷和未爆彈',
+        summary: '恭喜完成 Round 3！小總結：戰爭造成龐大的人命傷亡，並破壞基礎設施、歷史古蹟和自然環境，且帶來大規模難民潮和難以磨滅的心靈創傷。',
+    },
 
-    // === Round 4: 和平的守護者 ===
+    // === Round 4: 和平的守護者 (11 題) ===
     {
         round: 4,
         type: 'mc',
-        question: 'Q10. 哪個國際組織主要目標是「維護世界和平」及「調解各國紛爭」？',
-        options: ['國際奧委會', '聯合國', '國際特赦組織'],
+        question: 'Q31. 哪個國際組織的主要目標是「維護世界和平」及「調解各國紛爭」？',
+        options: ['國際奧委會', '聯合國', '無國界醫生'],
         answer: '聯合國',
-        summary: '聯合國是維護世界和平的主力，它致力於調解紛爭和消除大殺傷力武器；而如無國界醫生等非政府組織則提供關鍵的人道援助。',
+        summary: null,
     },
     {
         round: 4,
         type: 'mc',
-        question: 'Q11. 哪個組織宗旨是提供醫療人道救援？',
-        options: ['聯合國', '無國界醫生', '國際貿易組織'],
+        question: 'Q32. 聯合國其中一項重要工作是消除甚麼武器，以避免造成大規模傷亡？',
+        options: ['運動武器', '儀式武器', '大殺傷力武器'],
+        answer: '大殺傷力武器',
+        summary: null,
+    },
+    {
+        round: 4,
+        type: 'mc',
+        question: 'Q33. 哪個國際組織的宗旨是向受戰火或災難影響的人提供**醫療**人道救援？',
+        options: ['世界衛生組織', '無國界醫生', '國際貿易組織'],
         answer: '無國界醫生',
         summary: null,
     },
     {
         round: 4,
+        type: 'mc',
+        question: 'Q34. 無國界醫生曾獲頒哪個國際獎項？',
+        options: ['諾貝爾科學獎', '諾貝爾和平獎', '奧斯卡金像獎'],
+        answer: '諾貝爾和平獎',
+        summary: null,
+    },
+    {
+        round: 4,
         type: 'tf',
-        question: 'Q12. 為了長遠維持世界和平，國際間需要彼此尊重，並且互諒互讓。',
+        question: 'Q35. 聯合國設有專門的機構（難民署 UNHCR）來處理難民援助工作。',
         options: ['正確', '錯誤'],
         answer: '正確',
         summary: null,
     },
-    // *** 建議在此處加入更多 Round 4 題目 ***
-    
-    // === Boss Round (R5) 終極挑戰 ===
+    {
+        round: 4,
+        type: 'mc',
+        question: 'Q36. 為了維持和平，各國之間最理想的相處方式是？',
+        options: ['互不干涉', '彼此衷誠合作', '互相比較軍備'],
+        answer: '彼此衷誠合作',
+        summary: null,
+    },
+    {
+        round: 4,
+        type: 'mc',
+        question: 'Q37. 要維護世界和平，國際間需要彼此 \_\_\_\_\_\_ 和互諒互讓。',
+        options: ['對抗', '尊重', '競爭'],
+        answer: '尊重',
+        summary: null,
+    },
+    {
+        round: 4,
+        type: 'tf',
+        question: 'Q38. 無國界醫生在戰爭地區提供救援時，會只幫助特定政治立場的傷者。',
+        options: ['正確', '錯誤'],
+        answer: '錯誤',
+        summary: null,
+    },
+    {
+        round: 4,
+        type: 'mc',
+        question: 'Q39. 聯合國通過監察武裝組織的活動，是希望達成什麼目標？',
+        options: ['鼓勵發展軍備', '確保世界局勢穩定和平', '讓他們互相開戰'],
+        answer: '確保世界局勢穩定和平',
+        summary: null,
+    },
+    {
+        round: 4,
+        type: 'mc',
+        question: 'Q40. 「互諒互讓」對於避免戰爭有什麼重要性？',
+        options: ['堅持己見', '尋求雙方都滿意的方案', '訴諸武力'],
+        answer: '尋求雙方都滿意的方案',
+        summary: null,
+    },
+    {
+        round: 4,
+        type: 'mc',
+        question: 'Q41. 聯合國難民署（UNHCR）的主要職責是？',
+        options: ['提供醫療服務', '調解貿易糾紛', '保障難民權益和人道援助'],
+        answer: '保障難民權益和人道援助',
+        summary: '恭喜完成 Round 4！小總結：聯合國是維護世界和平的主力，它致力於調解紛爭和消除大殺傷力武器；而如無國界醫生等非政府組織則提供關鍵的人道援助。維護和平最終需要國際間的衷誠合作、彼此尊重與互諒互讓。',
+    },
+
+    // === Round 5: Boss Round (終極挑戰) (3 題) ===
     {
         round: 5,
         type: 'mc',
-        question: 'Q13. 下列哪一項是解決國際紛爭的**最理想**方法？',
+        question: 'Q42. [終極考驗] 下列哪一項是解決國際紛爭的**最理想**方法？',
         options: ['以武力威嚇對方', '透過聯合國進行對話和衷誠合作', '搶奪對方的經濟資源'],
         answer: '透過聯合國進行對話和衷誠合作',
-        summary: '恭喜！你完成了所有挑戰，成為地球村守衛者！\n你已掌握了戰爭的禍害及和平的重要性，記得在日常生活中實踐互相尊重，互諒互讓的精神！',
+        summary: null,
+    },
+    {
+        round: 5,
+        type: 'mc',
+        question: 'Q43. [終極考驗] 為了長遠維持世界和平，國際間需要彼此尊重，並且互諒 \_\_\_\_\_\_？',
+        options: ['爭', '讓', '鬥'],
+        answer: '讓',
+        summary: null,
+    },
+    {
+        round: 5,
+        type: 'mc',
+        question: 'Q44. [終極考驗] 總結本課，人類應該透過什麼方式來解決彼此間的衝突？',
+        options: ['訴諸武力', '和平對話', '互不理會'],
+        answer: '和平對話',
+        summary: '🏆 恭喜你，Smart Boy！你已經完成了所有挑戰，成為地球村守衛者！你已掌握了戰爭的禍害及和平的重要性，記得在日常生活中實踐互相尊重，互諒互讓的精神！',
     },
 
 ];
@@ -130,6 +375,7 @@ let score = 0;
 let totalQuestions = QUIZ_DATA.length;
 let selectedOption = null;
 let gameActive = false;
+let userName = 'Smart Boy'; // 設定預設名稱
 
 // --- DOM 元素 ---
 const welcomeScreen = document.getElementById('welcome-screen');
@@ -148,6 +394,8 @@ if (welcomeScreen) {
     welcomeScreen.innerHTML = `
         <span class="smart-boy-char">👨‍🎓</span>
         <h1>歡迎 Smart Boy！</h1>
+        <p>請輸入你的名字：</p>
+        <input type="text" id="user-name-input" placeholder="例如：Max" style="padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 15px;">
         <p>準備好接受「戰爭與和平」的挑戰，守護地球村了嗎？</p>
         <p>我們有 ${totalQuestions} 題等著你！</p>
         <button id="start-button" onclick="startApp()">開始挑戰</button>
@@ -158,6 +406,11 @@ if (welcomeScreen) {
 
 
 function startApp() {
+    const nameInput = document.getElementById('user-name-input').value.trim();
+    if (nameInput) {
+        userName = nameInput; // 如果用戶輸入了名字，就更新它
+    }
+    
     gameActive = true;
     score = 0;
     currentQuestionIndex = 0;
@@ -180,15 +433,21 @@ function loadQuestion() {
 
     const currentQ = QUIZ_DATA[currentQuestionIndex];
 
-    // 如果這是一輪的開始（或小結）
+    // 如果這是新一輪的開始
     if (currentQuestionIndex === 0 || QUIZ_DATA[currentQuestionIndex - 1].round !== currentQ.round) {
-        showRoundStart(currentQ.round);
-        return;
+        // 如果不是第一輪，並且上一題有總結，則已經在 showRoundSummary 處理
+        // 這裡確保第一輪也能直接開始
+        if (currentQ.round === 1) {
+             questionDisplay.innerHTML = `Round ${currentQ.round}: ${currentQ.question}`;
+        } else {
+             // 確保在從 summary 返回時，正常顯示題目
+             questionDisplay.innerHTML = `Round ${currentQ.round}: ${currentQ.question}`;
+        }
+    } else {
+        // 正常顯示題目
+        questionDisplay.innerHTML = `Round ${currentQ.round}: ${currentQ.question}`;
     }
-
-
-    // 正常顯示題目
-    questionDisplay.innerHTML = `Round ${currentQ.round}: ${currentQ.question}`;
+    
     optionsContainer.innerHTML = '';
     
     // 重設按鈕狀態
@@ -271,184 +530,4 @@ function checkAnswer() {
 }
 
 function showFeedback(isCorrect) {
-    // 這裡可以增加 Duolingo 式的 feedback 訊息，例如一個小彈窗
-    const message = isCorrect ? '✅ 太棒了！ Smart Boy 又答對一題！' : '❌ 不對喔，請再複習一下！';
-    
-    // 為了簡化，我們先在按鈕下方顯示簡單訊息
-    questionDisplay.innerHTML += `<p style="margin-top: 15px; color: ${isCorrect ? '#58cc02' : '#ff4747'};">${message}</p>`;
-}
-
-function nextQuestion() {
-    gameActive = true;
-    currentQuestionIndex++;
-
-    // 檢查是否需要顯示 Round Summary
-    if (currentQuestionIndex < totalQuestions && QUIZ_DATA[currentQuestionIndex - 1].summary) {
-        showRoundSummary(QUIZ_DATA[currentQuestionIndex - 1].summary, QUIZ_DATA[currentQuestionIndex].round);
-    } else {
-        loadQuestion();
-    }
-}
-
-// --- Round 小總結 ---
-function showRoundSummary(summaryText, nextRound) {
-    gameScreen.classList.add('hidden');
-    
-    const summaryDiv = document.createElement('section');
-    summaryDiv.className = 'summary-content';
-    summaryDiv.innerHTML = `
-        <span class="smart-boy-char">💡</span>
-        <h2>Round ${nextRound - 1} 小總結</h2>
-        <p style="white-space: pre-wrap; text-align: left; background: #e6f7ff; padding: 15px; border-radius: 8px;">${summaryText}</p>
-        <p style="font-weight: bold; color: #1cb0f6;">準備進入 Round ${nextRound} 挑戰！</p>
-        <button id="continue-button" style="background-color: #58cc02; color: white; border: none; padding: 15px 30px; border-radius: 12px; font-size: 18px; margin-top: 20px;">繼續挑戰</button>
-    `;
-    appContainer.appendChild(summaryDiv);
-
-    document.getElementById('continue-button').addEventListener('click', () => {
-        appContainer.removeChild(summaryDiv);
-        gameScreen.classList.remove('hidden');
-        loadQuestion();
-    });
-
-    updateProgressBar();
-}
-
-// --- 進度條更新 ---
-function updateProgressBar() {
-    const progress = (currentQuestionIndex / totalQuestions) * 100;
-    progressBar.style.setProperty('--progress-width', progress + '%');
-    
-    // 設置 CSS 變數來控制 ::before 元素的寬度
-    const style = document.createElement('style');
-    style.innerHTML = `#progress-bar::before { width: ${progress}%; }`;
-    document.head.appendChild(style);
-}
-
-// --- 遊戲結束與排名榜 ---
-function endGame() {
-    gameActive = false;
-    gameScreen.classList.add('hidden');
-    
-    // 紀錄成績
-    const finalScore = score;
-    const today = new Date().toLocaleDateString('zh-HK');
-    const newRecord = {
-        name: 'Smart Boy', // 固定用戶名稱
-        score: finalScore,
-        date: today
-    };
-
-    saveRecord(newRecord);
-    showLeaderboard(finalScore);
-}
-
-function saveRecord(record) {
-    let records = JSON.parse(localStorage.getItem('duolingoLeaderboard')) || [];
-    records.push(record);
-    // 只保留最好的 10 個成績
-    records.sort((a, b) => b.score - a.score);
-    localStorage.setItem('duolingoLeaderboard', JSON.stringify(records.slice(0, 10)));
-}
-
-function showLeaderboard(latestScore = null) {
-    gameScreen.classList.add('hidden');
-    welcomeScreen.classList.add('hidden');
-    leaderboardScreen.classList.remove('hidden');
-
-    let records = JSON.parse(localStorage.getItem('duolingoLeaderboard')) || [];
-    records.sort((a, b) => b.score - a.score);
-
-    let tableHTML = `
-        <span class="smart-boy-char">🏆</span>
-        <h2>全球守護者排名榜</h2>
-        ${latestScore !== null ? `<p style="color: #58cc02; font-weight: bold;">你的最新成績：${latestScore} / ${totalQuestions}</p>` : ''}
-        <table id="leaderboard-table">
-            <thead>
-                <tr>
-                    <th>排名</th>
-                    <th>用戶名</th>
-                    <th>得分</th>
-                    <th>日期</th>
-                </tr>
-            </thead>
-            <tbody>
-    `;
-
-    records.forEach((record, index) => {
-        tableHTML += `
-            <tr>
-                <td>${index + 1}</td>
-                <td>${record.name}</td>
-                <td>${record.score} / ${totalQuestions}</td>
-                <td>${record.date}</td>
-            </tr>
-        `;
-    });
-
-    tableHTML += `</tbody></table>`;
-    leaderboardScreen.innerHTML = tableHTML;
-    
-    // 返回主頁按鈕
-    const backButton = document.createElement('button');
-    backButton.textContent = '返回主頁 / 再玩一次';
-    backButton.style.cssText = 'background-color: #1cb0f6; color: white; border: none; padding: 15px 30px; border-radius: 12px; font-size: 18px; margin-top: 20px;';
-    backButton.addEventListener('click', () => {
-        window.location.reload(); // 最簡單的返回主頁方法
-    });
-    leaderboardScreen.appendChild(backButton);
-}
-
-// 初始化時綁定排名榜按鈕
-document.addEventListener('DOMContentLoaded', () => {
-    // 確保 startApp() 可以在 index.html 中被調用
-    window.startApp = startApp;
-    window.showLeaderboard = showLeaderboard;
-});
-
-// --- 遊戲狀態管理 ---
-let currentQuestionIndex = 0;
-let score = 0;
-let totalQuestions = QUIZ_DATA.length;
-let selectedOption = null;
-let gameActive = false;
-let userName = 'Smart Boy'; // ***新增：設定預設名稱*** // ... (其他 DOM 元素定義)
-
-// --- 遊戲初始化與啟動 ---
-function startApp() {
-    // ***修改：讀取輸入欄位的值***
-    const nameInput = document.getElementById('user-name-input').value.trim();
-    if (nameInput) {
-        userName = nameInput; // 如果用戶輸入了名字，就更新它
-    }
-    
-    gameActive = true;
-    score = 0;
-    currentQuestionIndex = 0;
-    
-    // 隱藏所有畫面，顯示遊戲畫面
-    welcomeScreen.classList.add('hidden');
-    leaderboardScreen.classList.add('hidden');
-    gameScreen.classList.remove('hidden');
-
-    loadQuestion();
-    // --------------------
-}
-
-// *** 同時修改 endGame() 函式，將 userName 寫入紀錄 ***
-function endGame() {
-    gameActive = false;
-    gameScreen.classList.add('hidden');
-    
-    // 紀錄成績
-    const finalScore = score;
-    const today = new Date().toLocaleDateString('zh-HK');
-    const newRecord = {
-        name: userName, // ***使用儲存的 userName***
-        score: finalScore,
-        date: today
-    };
-
-    saveRecord(newRecord);
-    showLeaderboard(finalScore);
-}
+    const currentQ = QUIZ_DATA[currentQuestionIndex];
