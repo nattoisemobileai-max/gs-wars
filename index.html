@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>地球村守衛者 - 戰爭與和平</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <section id="welcome-screen">
+            <h1>歡迎 Smart Boy！</h1>
+            <p>準備好接受挑戰，守護和平了嗎？</p>
+            <button onclick="startApp()">開始挑戰</button>
+        </section>
+
+        <section id="game-screen" class="hidden">
+            <div id="progress-bar"></div>
+            <div id="question-display"></div>
+            <div id="options-container"></div>
+            <button id="check-button" disabled>檢查答案</button>
+        </section>
+
+        <section id="leaderboard-screen" class="hidden">
+            </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
