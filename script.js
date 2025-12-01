@@ -391,7 +391,7 @@ const appContainer = document.getElementById('app-container');
 
 // 讓用戶可以從 welcome-screen 點擊開始
 if (welcomeScreen) {
-    welcomeScreen.innerHTML = `
+    welcomeScreen.innerHTML = '
         <span class="smart-boy-char">👨‍🎓</span>
         <h1>歡迎 Smart Boy！</h1>
         <p>請輸入你的名字：</p>
@@ -400,7 +400,7 @@ if (welcomeScreen) {
         <p>我們有 ${totalQuestions} 題等著你！</p>
         <button id="start-button" onclick="startApp()">開始挑戰</button>
         <button onclick="showLeaderboard()" style="background-color: #1cb0f6; color: white; border: none; padding: 10px 20px; border-radius: 8px; margin-top: 10px;">查看排名榜</button>
-    `;
+    ';
     document.getElementById('start-button').addEventListener('click', startApp);
 }
 
@@ -438,14 +438,14 @@ function loadQuestion() {
         // 如果不是第一輪，並且上一題有總結，則已經在 showRoundSummary 處理
         // 這裡確保第一輪也能直接開始
         if (currentQ.round === 1) {
-             questionDisplay.innerHTML = `Round ${currentQ.round}: ${currentQ.question}`;
+             questionDisplay.innerHTML = 'Round ${currentQ.round}: ${currentQ.question}';
         } else {
              // 確保在從 summary 返回時，正常顯示題目
-             questionDisplay.innerHTML = `Round ${currentQ.round}: ${currentQ.question}`;
+             questionDisplay.innerHTML = 'Round ${currentQ.round}: ${currentQ.question}';
         }
     } else {
         // 正常顯示題目
-        questionDisplay.innerHTML = `Round ${currentQ.round}: ${currentQ.question}`;
+        questionDisplay.innerHTML = 'Round ${currentQ.round}: ${currentQ.question}';
     }
     
     optionsContainer.innerHTML = '';
