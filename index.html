@@ -8,9 +8,14 @@
 <body>
     <div id="app-container">
         <section id="welcome-screen">
+            <span class="smart-boy-char">👨‍🎓</span>
             <h1>歡迎 Smart Boy！</h1>
+            
+            <p>請輸入你的名字：</p>
+            <input type="text" id="user-name-input" placeholder="例如：Max" style="padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 15px;">
             <p>準備好接受挑戰，守護和平了嗎？</p>
-            <button onclick="startApp()">開始挑戰</button>
+            <button id="start-button" onclick="startApp()">開始挑戰</button>
+            <button onclick="showLeaderboard()" style="...略去樣式...">查看排名榜</button>
         </section>
 
         <section id="game-screen" class="hidden">
