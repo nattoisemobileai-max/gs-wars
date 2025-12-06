@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港中學面試題目生成器 | 英華書院 · 聖保羅男女中學 · 宣道會陳瑞芝紀念中學 · 保良局董玉娣中學</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-graduation-cap"></i> 香港中學面試題目生成器</h1>
+            <p class="subtitle">專為指定中學定制面試準備題目</p>
+            <p class="subtitle">Secondary School Interview Question Generator</p>
+        </header>
+        
+        <div class="content">
+            <div class="selection-panel">
+                <h2><i class="fas fa-school"></i> 選擇學校</h2>
+                
+                <div class="form-group">
+                    <label for="schoolSelect"><i class="fas fa-list"></i> 選擇中學：</label>
+                    <select id="schoolSelect">
+                        <option value="">-- 請選擇學校 --</option>
+                    </select>
+                    <div class="school-count" id="schoolCount">載入中...</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="schoolSearch"><i class="fas fa-search"></i> 搜尋學校：</label>
+                    <input type="text" id="schoolSearch" placeholder="輸入學校名稱 (中文或英文)...">
+                </div>
+                
+                <button class="btn random-btn" id="randomBtn">
+                    <i class="fas fa-random"></i> 隨機選擇學校
+                </button>
+                
+                <button class="btn" id="generateBtn">
+                    <i class="fas fa-magic"></i> 生成面試題目
+                </button>
+                
+                <div class="loading" id="loadingIndicator">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>正在生成題目...</p>
+                </div>
+                
+                <div class="section highlight">
+                    <div class="section-title">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>支援學校</h3>
+                    </div>
+                    <p>本工具專為以下四所中學定制：</p>
+                    <ul class="question-list">
+                        <li>英華書院 (Ying Wa College)</li>
+                        <li>聖保羅男女中學 (St. Paul's Co-educational College)</li>
+                        <li>宣道會陳瑞芝紀念中學 (Alliance Church Chan Sui Ki College)</li>
+                        <li>保良局董玉娣中學 (Po Leung Kuk Tang Yuk Tien College)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="results-panel">
+                <h2><i class="fas fa-file-alt"></i> 面試題目與學校資料</h2>
+                
+                <div id="resultsContainer">
+                    <div class="no-school" id="noSchoolMessage">
+                        <i class="fas fa-info-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <h3>請選擇學校開始</h3>
+                        <p>從下拉選單中選擇一所中學，或使用搜尋功能尋找特定學校。</p>
+                        <p style="margin-top: 15px;">目前系統包含 <strong id="totalSchoolCount">0</strong> 所中學資料。</p>
+                    </div>
+                    
+                    <div id="questionsOutput" style="display: none;">
+                        <!-- Questions will be generated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>此工具為中學入學面試生成練習題目。題目僅供練習參考，實際面試問題可能有所不同。</p>
+            <p>建議結合學校官方資料和個人經歷進行面試準備。</p>
+            <p>託管於 GitHub Pages | 為學生製作 <i class="fas fa-heart" style="color: #e74c3c;"></i></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
