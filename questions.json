@@ -1,0 +1,277 @@
+{
+  "questions": [
+    {
+      "id": "CHI-001",
+      "category": "chinese",
+      "question": "請用三分鐘介紹你自己。",
+      "modelAnswer": "各位老師好，我叫陳小明，今年12歲，就讀於聖公會小學。我性格開朗樂觀，喜歡與人交流。在學業方面，我對數學和科學特別感興趣，曾獲得校內數學比賽冠軍。課餘時間我喜歡閱讀和游泳，閱讀讓我開闊視野，游泳則讓我學會堅持不懈。我選擇貴校是因為欣賞學校的全人教育理念，希望能在這裡全面發展。",
+      "studentVersion": ""
+    },
+    {
+      "id": "CHI-002",
+      "category": "chinese",
+      "question": "你為什麼選擇我們學校？",
+      "modelAnswer": "我選擇貴校主要有三個原因：第一，貴校的教學理念與我的學習目標相符，特別是在STEM教育方面的成就讓我印象深刻；第二，我了解到貴校有豐富的課外活動，能夠讓學生全面發展；第三，貴校的校友在社會各個領域都有傑出表現，這證明了學校教育的成功。我相信在這裡學習能夠幫助我實現我的理想。",
+      "studentVersion": ""
+    },
+    {
+      "id": "CHI-003",
+      "category": "chinese",
+      "question": "你最喜歡的中文課文是什麼？為什麼？",
+      "modelAnswer": "我最喜歡的課文是《背影》，這篇文章通過父親送別兒子的場景，展現了深沉的父愛和親情的可貴。文章中的細節描寫特別打動我，比如父親為兒子買橘子的場景，雖然簡單卻充滿感情。這篇文章讓我更加珍惜與家人相處的時光，也讓我體會到親情的無私和偉大。",
+      "studentVersion": ""
+    },
+    {
+      "id": "CHI-004",
+      "category": "chinese",
+      "question": "你平時如何提升你的中文寫作能力？",
+      "modelAnswer": "我通過三種方式提升中文寫作能力：第一，堅持每日閱讀，特別是經典文學作品和優質報刊；第二，每周寫一篇週記，記錄生活點滴和思考；第三，參加學校的寫作興趣小組，與同學互相評改作文。我也會把優秀的句子和表達方式記錄下來，建立自己的寫作素材庫。",
+      "studentVersion": ""
+    },
+    {
+      "id": "WY-CHI-001",
+      "category": "chinese",
+      "school": "英華書院",
+      "question": "[WY] 閱讀一篇文章並回答相關問題。（4分鐘準備）",
+      "modelAnswer": "（閱讀理解題目回答要點）首先，我會快速瀏覽全文，了解文章大意和結構。然後仔細閱讀問題，確定回答方向。回答時會先簡述文章主要內容，再針對問題要點逐一回答。對於需要分析的題目，會引用文章中的具體內容支持觀點。最後會檢查答案是否完整、條理是否清晰。",
+      "studentVersion": ""
+    },
+    {
+      "id": "WY-CHI-002",
+      "category": "chinese",
+      "school": "英華書院",
+      "question": "[WY] 如何營造一個環保校園？",
+      "modelAnswer": "營造環保校園需要多方面的努力：首先，學校可以推行環保政策如減少使用一次性塑膠、設置分類回收桶、節約用水用電。其次，開設環保教育課程，提高師生的環保意識。第三，組織環保活動如植樹日、清潔校園等。學生方面，可以成立環保小組，帶頭實踐環保生活，並鼓勵同學參與。",
+      "studentVersion": ""
+    },
+    {
+      "id": "ENG-001",
+      "category": "english",
+      "question": "Tell us about yourself in three minutes.",
+      "modelAnswer": "Good morning, teachers. My name is Chan Siu Ming, and I'm 12 years old. I'm currently studying at SKH Primary School. I'm an enthusiastic and determined student who always strives to do my best. Academically, I excel in Mathematics and Science, and I won the school's Math Competition last year. Outside the classroom, I enjoy reading science fiction books and playing basketball. Reading helps me develop my imagination, while basketball teaches me teamwork and perseverance. I'm interested in your school because of its strong focus on holistic education and excellent academic reputation.",
+      "studentVersion": ""
+    },
+    {
+      "id": "ENG-002",
+      "category": "english",
+      "question": "Why do you want to study at our school?",
+      "modelAnswer": "I want to study at your school for several reasons. Firstly, your school's emphasis on whole-person education aligns perfectly with my personal development goals. Secondly, I'm impressed by your school's outstanding academic results and the success of your alumni in various fields. Thirdly, I appreciate the diverse extracurricular activities offered, which would allow me to explore different interests. Lastly, the school's supportive learning environment and dedicated teachers would provide me with the guidance I need to achieve my full potential.",
+      "studentVersion": ""
+    },
+    {
+      "id": "ENG-003",
+      "category": "english",
+      "question": "What are your strengths and weaknesses?",
+      "modelAnswer": "My greatest strength is my perseverance. When faced with challenges, I don't give up easily but instead look for different ways to overcome them. For example, when I struggled with a difficult math concept, I spent extra time practicing and seeking help until I mastered it. As for my weakness, I sometimes spend too much time perfecting details. I'm learning to balance thoroughness with efficiency by setting time limits for tasks and prioritizing what's most important.",
+      "studentVersion": ""
+    },
+    {
+      "id": "WY-ENG-001",
+      "category": "english",
+      "school": "英華書院",
+      "question": "[WY] Read aloud the passage and answer the related questions. (4 mins preparation time)",
+      "modelAnswer": "For reading aloud, I would first practice pronouncing difficult words and pay attention to punctuation for appropriate pauses. I would read with clear pronunciation, appropriate speed, and good intonation to convey the meaning effectively. When answering questions, I would listen carefully to each question, take a moment to organize my thoughts, and provide clear, concise answers supported by evidence from the passage.",
+      "studentVersion": ""
+    },
+    {
+      "id": "WY-ENG-002",
+      "category": "english",
+      "school": "英華書院",
+      "question": "[WY] What is your favourite breakfast and why?",
+      "modelAnswer": "My favorite breakfast is oatmeal with fresh fruits and nuts. I prefer this because it's not only delicious but also highly nutritious. Oatmeal provides sustained energy for the morning classes, while fruits give me essential vitamins. The nuts add healthy fats and protein. This breakfast keeps me full and focused throughout the morning. Additionally, it's quick to prepare, which is important on school days when time is limited.",
+      "studentVersion": ""
+    },
+    {
+      "id": "FW-001",
+      "category": "english",
+      "question": "[FW] What is your name? Which school do you come from?",
+      "modelAnswer": "My name is Chan Siu Ming, and I come from SKH Primary School. I've been studying there for six years, and I've had many wonderful learning experiences. My school has provided me with a solid foundation in both academic subjects and personal development. The teachers are supportive and encouraging, which has helped me grow both as a student and as an individual.",
+      "studentVersion": ""
+    },
+    {
+      "id": "FW-002",
+      "category": "english",
+      "question": "[FW] What are your hobbies?",
+      "modelAnswer": "I have several hobbies that help me maintain a balanced lifestyle. I enjoy reading, particularly science fiction and adventure novels, which stimulate my imagination. I also play the piano, which helps me relax and express myself creatively. Additionally, I participate in basketball, which keeps me physically active and teaches me teamwork. These hobbies complement my academic studies and contribute to my overall development.",
+      "studentVersion": ""
+    },
+    {
+      "id": "FW-003",
+      "category": "english",
+      "question": "[FW] Who do you respect the most?",
+      "modelAnswer": "The person I respect most is my mathematics teacher, Mr. Wong. He not only teaches the subject well but also inspires us to think critically and creatively. What I admire most about him is his patience and dedication - he always finds time to help students who are struggling. He has taught me that learning is not just about getting good grades, but about developing a genuine understanding and appreciation for knowledge.",
+      "studentVersion": ""
+    },
+    {
+      "id": "FW-004",
+      "category": "english",
+      "question": "[FW] If you had one million dollars, how would you spend the money?",
+      "modelAnswer": "If I had one million dollars, I would allocate it in three main ways. First, I would invest in my education by setting aside funds for university studies and learning resources. Second, I would donate a portion to charitable organizations that support education for underprivileged children. Third, I would use some money to start a small environmental project, such as creating a community garden or organizing beach clean-ups. Finally, I would save the remainder for future opportunities and emergencies.",
+      "studentVersion": ""
+    },
+    {
+      "id": "FW-005",
+      "category": "english",
+      "question": "[FW] What are the pros and cons of using the Internet?",
+      "modelAnswer": "The Internet has both advantages and disadvantages. On the positive side, it provides access to vast information, facilitates communication across distances, and offers educational resources and opportunities for online learning. However, there are also drawbacks such as the risk of misinformation, privacy concerns, and excessive screen time affecting physical health and social skills. It's important to use the Internet wisely, with critical thinking and balanced usage.",
+      "studentVersion": ""
+    },
+    {
+      "id": "MATH-001",
+      "category": "math",
+      "question": "What do you find most interesting about mathematics?",
+      "modelAnswer": "What I find most interesting about mathematics is how it provides logical solutions to real-world problems. Unlike other subjects that rely on memorization, mathematics is about understanding patterns and relationships. I enjoy the challenge of solving complex problems and the satisfaction that comes with finding the correct solution. Mathematics also teaches me to think critically and systematically, skills that are valuable in all areas of life.",
+      "studentVersion": ""
+    },
+    {
+      "id": "MATH-002",
+      "category": "math",
+      "question": "How do you apply mathematics in your daily life?",
+      "modelAnswer": "I apply mathematics in many aspects of my daily life. When shopping, I use percentages to calculate discounts and compare prices. In cooking, I use measurements and ratios to adjust recipes. When managing my allowance, I use basic arithmetic for budgeting. I also use geometry when playing sports like basketball to calculate angles for shooting. Mathematics helps me make better decisions and solve practical problems efficiently.",
+      "studentVersion": ""
+    },
+    {
+      "id": "MATH-003",
+      "category": "math",
+      "question": "Describe a time when you used logic to solve a problem.",
+      "modelAnswer": "Once, when I was organizing a class event, we needed to divide 120 students into groups of equal size. I used logical reasoning to determine that we could have groups of 6, 8, 10, or 12 students, as these numbers divide evenly into 120. Considering that we wanted groups small enough for good discussion but large enough for diverse opinions, I suggested groups of 10, which worked perfectly for our activity.",
+      "studentVersion": ""
+    },
+    {
+      "id": "CUR-001",
+      "category": "current",
+      "question": "你對香港最近的社會議題有什麼看法？",
+      "modelAnswer": "作為學生，我認為香港最近的社會議題反映了社會的多元化和不同群體的需求。我觀察到各方都在努力尋找平衡點，市民也積極參與社會討論。我認為建設性的對話和相互理解是解決問題的關鍵。我們應該學習從多角度看待問題，尊重不同意見，並共同尋找適合香港發展的解決方案。年輕一代更應該培養批判性思維，理性分析社會現象。",
+      "studentVersion": ""
+    },
+    {
+      "id": "CUR-002",
+      "category": "current",
+      "question": "你如何評價香港的教育制度？",
+      "modelAnswer": "香港的教育制度有其優勢和改進空間。優勢方面，香港的學術水平在國際上有不錯的聲譽，培養了許多優秀人才。教育資源相對豐富，提供多元化的學習機會。然而，教育制度也存在壓力較大、過度側重考試成績等問題。我認為教育應該更加注重培養學生的創意思維、解決問題能力和全人發展，而不僅僅是學術成績。",
+      "studentVersion": ""
+    },
+    {
+      "id": "SCI-001",
+      "category": "science",
+      "question": "你對哪個科學領域最感興趣？為什麼？",
+      "modelAnswer": "我對環境科學最感興趣，因為這個領域直接關係到我們星球的未來。環境科學不僅幫助我們理解自然生態系統，還提供了解決環境問題的方法。我特別關注氣候變化和可持續發展議題，因為這些都是當前全球面臨的重要挑戰。學習環境科學讓我明白人類活動對環境的影響，也激發我思考如何通過科技和創新來保護我們的地球。",
+      "studentVersion": ""
+    },
+    {
+      "id": "SCI-002",
+      "category": "science",
+      "question": "描述一個你印象深刻的科學實驗或發現。",
+      "modelAnswer": "我印象最深刻的是牛頓發現萬有引力的故事。據說牛頓看到蘋果從樹上掉下來，開始思考為什麼物體總是向下掉落。通過深入研究和數學計算，他發現了萬有引力定律。這個故事讓我體會到科學發現往往源於對日常現象的好奇心和深入的思考。它啟發我要多觀察、多思考身邊的事物，也許下一個重要的發現就藏在平凡之中。",
+      "studentVersion": ""
+    },
+    {
+      "id": "CRE-001",
+      "category": "creative",
+      "question": "如果你有一天的時間可以做任何事，你會做什麼？為什麼？",
+      "modelAnswer": "如果有一天可以做任何事，我會選擇與世界頂尖的科學家和發明家會面，了解他們的研究和創新思維。上午我想參觀NASA或CERN等科研機構，下午則希望與像Elon Musk或Jane Goodall這樣的創新者對話。晚上我會整理學到的知識，思考如何將這些創新應用到解決香港的環境和社會問題中。這一天將讓我獲得啟發，為未來的學習和研究方向提供寶貴的見解。",
+      "studentVersion": ""
+    },
+    {
+      "id": "CRE-002",
+      "category": "creative",
+      "question": "描述一個你原創的想法或發明。",
+      "modelAnswer": "我曾經構思過一個「智能書包」的發明。這個書包內置重量感應器，當書包過重時會發出提醒，保護學生的脊椎健康。它還具有GPS定位功能，方便家長了解孩子的位置。書包表面使用太陽能材料，可以為內置的電子設備充電。此外，書包內有分區收納設計，幫助學生更好地整理物品。這個發明結合了健康保護、安全和便利性。",
+      "studentVersion": ""
+    },
+    {
+      "id": "OTH-001",
+      "category": "other",
+      "question": "你如何定義成功？",
+      "modelAnswer": "我認為成功不僅僅是取得好成績或獲得物質財富，更重要的是實現個人成長、對社會有所貢獻，並找到生活的意義和快樂。對我而言，成功包括：不斷學習和進步、建立良好的人際關係、發展自己的興趣和才能、以及幫助他人。真正的成功應該是全面的，涵蓋學業、品德、健康和人際關係等多個方面。",
+      "studentVersion": ""
+    },
+    {
+      "id": "OTH-002",
+      "category": "other",
+      "question": "你如何平衡學業和興趣？",
+      "modelAnswer": "我通過時間管理和設定優先次序來平衡學業和興趣。首先，我會制定每周計劃，分配固定的時間給學業和興趣活動。其次，我會將大任務分解成小步驟，避免拖延。當學業壓力大時，我會將興趣活動作為調劑和放鬆的方式。我也發現，適當的興趣活動其實有助於提高學習效率，因為它們讓我保持積極的心態和創造力。",
+      "studentVersion": ""
+    },
+    {
+      "id": "GRP-001",
+      "category": "group",
+      "question": "如何營造一個環保校園？",
+      "modelAnswer": "營造環保校園需要學校和學生的共同努力。我們可以從以下幾個方面著手：1) 推行減廢回收計劃，設置分類回收桶；2) 節約能源，提倡隨手關燈關冷氣；3) 建立校園農圃，種植有機蔬菜；4) 舉辦環保教育活動，提高師生環保意識；5) 使用環保教材和可重複使用的物品。作為學生，我們可以成立環保小組，帶頭實踐並鼓勵同學參與。",
+      "studentVersion": ""
+    },
+    {
+      "id": "GRP-002",
+      "category": "group",
+      "question": "你是否贊成中學生未婚產子？",
+      "modelAnswer": "我不贊成中學生未婚產子。中學階段是學習和成長的關鍵時期，學生的主要任務應該是完成學業和發展自我。過早承擔父母責任會影響學業、限制未來發展機會，也可能帶來經濟和心理壓力。中學生應該專注於教育，培養能力和品格，為未來做好準備。學校和家庭應該加強性教育和價值觀教育，幫助學生做出明智的選擇。",
+      "studentVersion": ""
+    },
+    {
+      "id": "SPCC-001",
+      "category": "schoolSpecific",
+      "school": "聖保羅男女中學",
+      "question": "聖保羅男女中學以學術卓越著稱，你如何應對學術挑戰？",
+      "modelAnswer": "面對學術挑戰，我會採取系統性的應對策略。首先，我會確保充分理解課程要求並制定合理的學習計劃。當遇到困難時，我會主動尋求老師的指導和同學的幫助。我會將大任務分解為小目標，逐步完成。同時，我會保持積極的學習態度，將挑戰視為成長的機會。我相信貴校的學習環境和資源將幫助我更好地應對學術挑戰，實現自我超越。",
+      "studentVersion": ""
+    },
+    {
+      "id": "SPCC-002",
+      "category": "schoolSpecific",
+      "school": "聖保羅男女中學",
+      "question": "你對IB課程有什麼了解和期望？",
+      "modelAnswer": "我了解到IB課程是國際認可的大學預科課程，注重培養學生的國際視野、批判性思維和研究能力。課程包括六個學科組、知識理論、拓展論文和創造、行動與服務。我希望通過IB課程發展獨立學習能力、研究技巧和跨學科思維。我相信IB課程將為我未來的大學學習和國際環境中的發展奠定堅實基礎。",
+      "studentVersion": ""
+    },
+    {
+      "id": "LSK-001",
+      "category": "schoolSpecific",
+      "school": "香港青年會李兆基書院",
+      "question": "你對李兆基書院的STEAM教育有什麼認識？",
+      "modelAnswer": "我了解到李兆基書院的STEAM教育強調科學、技術、工程、藝術和數學的跨學科整合。學校通過項目式學習讓學生解決真實世界的問題，培養創新思維和實踐能力。我特別欣賞學校的創新實驗室和與業界的合作項目，這些都為學生提供了將理論應用於實踐的機會。我相信這種教育模式能夠幫助我發展21世紀所需的重要技能，為未來的學習和職業發展打下堅實基礎。",
+      "studentVersion": ""
+    },
+    {
+      "id": "LSK-002",
+      "category": "schoolSpecific",
+      "school": "香港青年會李兆基書院",
+      "question": "你如何看待李兆基書院的國際視野培養？",
+      "modelAnswer": "我了解到李兆基書院非常重視培養學生的國際視野，通過多元文化教育、國際交流計劃和全球議題探討等方式實現。學校鼓勵學生了解不同文化、培養跨文化溝通能力，並關注全球性問題如氣候變化、可持續發展等。我相信這種教育將幫助我成為具有國際視野和社會責任感的全球公民，為未來的國際交流和合作做好準備。",
+      "studentVersion": ""
+    },
+    {
+      "id": "ACSKS-001",
+      "category": "schoolSpecific",
+      "school": "宣道會陳瑞芝紀念中學",
+      "question": "你對宣道會陳瑞芝紀念中學的基督教教育理念有什麼看法？",
+      "modelAnswer": "我認同宣道會陳瑞芝紀念中學的基督教教育理念，它不僅注重學術成就，更重視學生的全人發展和品德培養。基督教價值觀如愛心、誠實、尊重和責任感，對學生成長為有品格、有擔當的人非常重要。我相信這種教育理念能夠幫助學生在學術、心靈和人際關係上均衡發展，成為對社會有積極貢獻的人。",
+      "studentVersion": ""
+    },
+    {
+      "id": "PLKTYTC-001",
+      "category": "schoolSpecific",
+      "school": "保良局董玉娣中學",
+      "question": "保良局董玉娣中學注重科技教育，你對哪些科技領域感興趣？",
+      "modelAnswer": "我對人工智能和數據科學特別感興趣。人工智能正在改變我們的生活方式和工作方式，學習這方面的知識可以幫助我理解未來的科技發展趨勢。數據科學則幫助我們從大量信息中提取有價值的見解，這在許多領域都有應用。我希望通過貴校的科技教育，學習編程、機器學習和數據分析等技能，為未來的科技創新做準備。",
+      "studentVersion": ""
+    }
+  ],
+  
+  "categories": {
+    "chinese": ["CHI-001", "CHI-002", "CHI-003", "CHI-004", "WY-CHI-001", "WY-CHI-002"],
+    "english": ["ENG-001", "ENG-002", "ENG-003", "WY-ENG-001", "WY-ENG-002", "FW-001", "FW-002", "FW-003", "FW-004", "FW-005"],
+    "math": ["MATH-001", "MATH-002", "MATH-003"],
+    "current": ["CUR-001", "CUR-002"],
+    "science": ["SCI-001", "SCI-002"],
+    "creative": ["CRE-001", "CRE-002"],
+    "other": ["OTH-001", "OTH-002"],
+    "group": ["GRP-001", "GRP-002"],
+    "schoolSpecific": {
+      "英華書院": ["WY-CHI-001", "WY-CHI-002", "WY-ENG-001", "WY-ENG-002"],
+      "聖保羅男女中學": ["SPCC-001", "SPCC-002"],
+      "宣道會陳瑞芝紀念中學": ["ACSKS-001"],
+      "保良局董玉娣中學": ["PLKTYTC-001"],
+      "香港青年會李兆基書院": ["LSK-001", "LSK-002"]
+    }
+  }
+}
