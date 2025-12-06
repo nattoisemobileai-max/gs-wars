@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secondary School Interview Question Generator</title>
+    <title>中學面試題目生成器 | Secondary School Interview Question Generator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -229,6 +229,54 @@
             margin-bottom: 10px;
         }
         
+        .chinese-name {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        
+        .school-name-display {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .english-name {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .error-message {
+            background-color: #fee;
+            color: #c33;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 5px solid #c33;
+            margin: 20px 0;
+        }
+        
+        .school-count {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        .highlight {
+            background-color: #fff8e1;
+            border-left-color: #ffc107;
+        }
+        
+        .option-chinese {
+            font-size: 0.9rem;
+            color: #666;
+            margin-left: 8px;
+        }
+        
         @media (max-width: 768px) {
             .content {
                 flex-direction: column;
@@ -243,48 +291,65 @@
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-graduation-cap"></i> Secondary School Interview Question Generator</h1>
-            <p class="subtitle">Prepare for your school interviews with customized questions based on school profiles</p>
+            <h1><i class="fas fa-graduation-cap"></i> 中學面試題目生成器</h1>
+            <p class="subtitle">Secondary School Interview Question Generator</p>
+            <p class="subtitle">根據學校特點生成個性化面試問題</p>
         </header>
         
         <div class="content">
             <div class="selection-panel">
-                <h2><i class="fas fa-school"></i> Select a School</h2>
+                <h2><i class="fas fa-school"></i> 選擇學校</h2>
                 
                 <div class="form-group">
-                    <label for="schoolSelect"><i class="fas fa-list"></i> Choose a Secondary School:</label>
+                    <label for="schoolSelect"><i class="fas fa-list"></i> 選擇中學：</label>
                     <select id="schoolSelect">
-                        <option value="">-- Select a school --</option>
+                        <option value="">-- 請選擇學校 --</option>
                     </select>
+                    <div class="school-count" id="schoolCount">載入中...</div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="schoolSearch"><i class="fas fa-search"></i> Or search for a school:</label>
-                    <input type="text" id="schoolSearch" placeholder="Type school name...">
+                    <label for="schoolSearch"><i class="fas fa-search"></i> 搜尋學校：</label>
+                    <input type="text" id="schoolSearch" placeholder="輸入學校名稱...">
                 </div>
                 
                 <button class="btn random-btn" id="randomBtn">
-                    <i class="fas fa-random"></i> Generate Random School Questions
+                    <i class="fas fa-random"></i> 隨機生成學校問題
                 </button>
                 
                 <button class="btn" id="generateBtn">
-                    <i class="fas fa-magic"></i> Generate Interview Questions
+                    <i class="fas fa-magic"></i> 生成面試題目
                 </button>
                 
                 <div class="loading" id="loadingIndicator">
                     <i class="fas fa-spinner fa-spin"></i>
-                    <p>Generating questions...</p>
+                    <p>正在生成題目...</p>
+                </div>
+                
+                <div class="section highlight">
+                    <div class="section-title">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>新增學校</h3>
+                    </div>
+                    <p>已新增以下學校：</p>
+                    <ul class="question-list">
+                        <li>英華書院 (Ying Wa College)</li>
+                        <li>聖保羅男女中學 (St. Paul's Co-educational College)</li>
+                        <li>宣道會陳瑞芝紀念中學 (Alliance Church Chan Sui Ki College)</li>
+                        <li>保良局董玉娣中學 (Po Leung Kuk Tang Yuk Tien College)</li>
+                    </ul>
                 </div>
             </div>
             
             <div class="results-panel">
-                <h2><i class="fas fa-file-alt"></i> Interview Questions</h2>
+                <h2><i class="fas fa-file-alt"></i> 面試題目</h2>
                 
                 <div id="resultsContainer">
                     <div class="no-school" id="noSchoolMessage">
                         <i class="fas fa-info-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
-                        <h3>Select a school to begin</h3>
-                        <p>Choose a secondary school from the dropdown or use the search to find a specific school.</p>
+                        <h3>請選擇學校開始</h3>
+                        <p>從下拉選單中選擇一所中學，或使用搜尋功能尋找特定學校。</p>
+                        <p style="margin-top: 15px;">目前系統包含 <strong id="totalSchoolCount">0</strong> 所中學資料。</p>
                     </div>
                     
                     <div id="questionsOutput" style="display: none;">
@@ -295,115 +360,13 @@
         </div>
         
         <div class="footer">
-            <p>This tool generates sample interview questions for secondary school admissions. Questions are for practice purposes only.</p>
-            <p>Hosted on GitHub Pages | Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for students</p>
+            <p>此工具為中學入學面試生成練習題目。題目僅供練習參考。</p>
+            <p>託管於 GitHub Pages | 為學生製作 <i class="fas fa-heart" style="color: #e74c3c;"></i></p>
         </div>
     </div>
 
     <script>
-        // School data (in a real scenario, this would be loaded from a JSON file)
-        const schoolsData = {
-            "schools": [
-                {
-                    "id": 1,
-                    "name": "St. Mary's College",
-                    "type": "Aided",
-                    "religion": "Catholic",
-                    "gender": "Co-ed",
-                    "district": "Central & Western",
-                    "language": "English",
-                    "specialty": "Science, Music",
-                    "website": "www.stmary.edu.hk",
-                    "phone": "2546-1234"
-                },
-                {
-                    "id": 2,
-                    "name": "Queen's Secondary School",
-                    "type": "Government",
-                    "religion": "None",
-                    "gender": "Girls",
-                    "district": "Wan Chai",
-                    "language": "English",
-                    "specialty": "Languages, Arts",
-                    "website": "www.queensschool.edu.hk",
-                    "phone": "2877-5678"
-                },
-                {
-                    "id": 3,
-                    "name": "Kowloon Technical School",
-                    "type": "Government",
-                    "religion": "None",
-                    "gender": "Boys",
-                    "district": "Kowloon City",
-                    "language": "Chinese",
-                    "specialty": "STEM, Technology",
-                    "website": "www.kts.edu.hk",
-                    "phone": "2334-9876"
-                },
-                {
-                    "id": 4,
-                    "name": "Hong Kong International School",
-                    "type": "Private",
-                    "religion": "None",
-                    "gender": "Co-ed",
-                    "district": "Southern",
-                    "language": "English",
-                    "specialty": "IB Programme, Sports",
-                    "website": "www.hkis.edu.hk",
-                    "phone": "2812-5000"
-                },
-                {
-                    "id": 5,
-                    "name": "Sacred Heart Canossian School",
-                    "type": "Aided",
-                    "religion": "Catholic",
-                    "gender": "Girls",
-                    "district": "Yau Tsim Mong",
-                    "language": "English",
-                    "specialty": "Music, Community Service",
-                    "website": "www.shcc.edu.hk",
-                    "phone": "2385-4321"
-                },
-                {
-                    "id": 6,
-                    "name": "Diocesan Boys' School",
-                    "type": "Aided",
-                    "religion": "Anglican",
-                    "gender": "Boys",
-                    "district": "Kowloon City",
-                    "language": "English",
-                    "specialty": "Sports, Leadership",
-                    "website": "www.dbs.edu.hk",
-                    "phone": "2711-5191"
-                },
-                {
-                    "id": 7,
-                    "name": "True Light Middle School",
-                    "type": "Aided",
-                    "religion": "Christian",
-                    "gender": "Girls",
-                    "district": "Kowloon Tong",
-                    "language": "Chinese",
-                    "specialty": "Science, Visual Arts",
-                    "website": "www.truelight.edu.hk",
-                    "phone": "2337-0123"
-                },
-                {
-                    "id": 8,
-                    "name": "Wah Yan College, Hong Kong",
-                    "type": "Aided",
-                    "religion": "Catholic",
-                    "gender": "Boys",
-                    "district": "Wan Chai",
-                    "language": "English",
-                    "specialty": "Debating, Mathematics",
-                    "website": "www.wahyan.edu.hk",
-                    "phone": "2572-2251"
-                }
-            ]
-        };
-
-        // Interview question templates
+        // 面試題目模板
         const questionTemplates = {
             chinese: [
                 "請用三分鐘介紹你自己。",
@@ -412,7 +375,10 @@
                 "你平時如何提升你的中文寫作能力？",
                 "你最近讀過的一本中文書是什麼？有什麼感想？",
                 "你如何看待中文在現代社會的重要性？",
-                "請用中文描述你的一次難忘經歷。"
+                "請用中文描述你的一次難忘經歷。",
+                "你認為學習中國文化有什麼意義？",
+                "你最欣賞的中國文學作品是什麼？為什麼？",
+                "你如何平衡中文學習和其他學科的關係？"
             ],
             english: [
                 "Tell us about yourself in three minutes.",
@@ -421,7 +387,10 @@
                 "How do you improve your English outside of school?",
                 "Describe a challenge you have overcome.",
                 "What are your strengths and weaknesses?",
-                "Where do you see yourself in five years?"
+                "Where do you see yourself in five years?",
+                "How do you handle pressure and stress?",
+                "What extracurricular activities are you interested in?",
+                "What qualities do you think are important for a student at our school?"
             ],
             math: [
                 "What do you find most interesting about mathematics?",
@@ -430,7 +399,10 @@
                 "What is your favorite mathematical concept and why?",
                 "Describe a time when you used logic to solve a problem.",
                 "How would you explain fractions to a younger student?",
-                "What mathematical achievement are you most proud of?"
+                "What mathematical achievement are you most proud of?",
+                "How do you approach a math problem you don't understand?",
+                "What's the connection between mathematics and other subjects?",
+                "Can you give an example of how mathematics is used in the real world?"
             ],
             manner: [
                 "How would you handle a disagreement with a classmate?",
@@ -439,7 +411,10 @@
                 "How do you handle stress during exams?",
                 "What would you do if you saw someone being bullied?",
                 "How do you balance schoolwork and extracurricular activities?",
-                "What qualities make a good student in our school?"
+                "What qualities make a good student in our school?",
+                "How do you contribute to your community?",
+                "What would you do if you made a mistake in a group project?",
+                "How do you show respect to teachers and classmates?"
             ]
         };
 
@@ -451,18 +426,88 @@
         const questionsOutput = document.getElementById('questionsOutput');
         const noSchoolMessage = document.getElementById('noSchoolMessage');
         const loadingIndicator = document.getElementById('loadingIndicator');
+        const schoolCount = document.getElementById('schoolCount');
+        const totalSchoolCount = document.getElementById('totalSchoolCount');
 
-        // Initialize the school dropdown
+        // 學校數據變量（從JSON文件加載）
+        let schoolsData = null;
+
+        // 從外部JSON文件加載學校數據
+        async function loadSchoolsData() {
+            try {
+                const response = await fetch('schools.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                schoolsData = await response.json();
+                console.log('學校數據加載成功:', schoolsData.schools.length + ' 所學校');
+                
+                // 初始化學校下拉選單
+                initializeSchoolDropdown();
+                
+                // 更新學校數量顯示
+                schoolCount.textContent = `共 ${schoolsData.schools.length} 所學校`;
+                totalSchoolCount.textContent = schoolsData.schools.length;
+                
+                // 加載後隨機選擇一個學校
+                setTimeout(() => {
+                    if (schoolsData.schools.length > 0) {
+                        const randomIndex = Math.floor(Math.random() * schoolsData.schools.length);
+                        schoolSelect.value = schoolsData.schools[randomIndex].id;
+                        generateQuestions(schoolsData.schools[randomIndex].id);
+                    }
+                }, 500);
+                
+            } catch (error) {
+                console.error('加載學校數據時出錯:', error);
+                // 顯示錯誤信息
+                schoolCount.textContent = '加載學校數據失敗，請刷新頁面重試';
+                schoolCount.style.color = '#c33';
+                
+                // 使用備用數據
+                schoolsData = {
+                    schools: [
+                        {
+                            "id": 1,
+                            "name": "St. Mary's College",
+                            "chineseName": "聖瑪利書院",
+                            "type": "Aided",
+                            "religion": "Catholic",
+                            "gender": "Co-ed",
+                            "district": "Central & Western",
+                            "language": "English",
+                            "specialty": "Science, Music",
+                            "website": "www.stmary.edu.hk",
+                            "phone": "2546-1234"
+                        }
+                    ]
+                };
+                
+                initializeSchoolDropdown();
+                schoolCount.textContent = `使用備用數據（${schoolsData.schools.length} 所學校）`;
+            }
+        }
+
+        // 初始化學校下拉選單
         function initializeSchoolDropdown() {
+            schoolSelect.innerHTML = '<option value="">-- 請選擇學校 --</option>';
+            
             schoolsData.schools.forEach(school => {
                 const option = document.createElement('option');
                 option.value = school.id;
                 option.textContent = school.name;
+                
+                // 添加中文名稱顯示
+                const chineseSpan = document.createElement('span');
+                chineseSpan.className = 'option-chinese';
+                chineseSpan.textContent = school.chineseName;
+                option.appendChild(chineseSpan);
+                
                 schoolSelect.appendChild(option);
             });
         }
 
-        // Get random questions from a category
+        // 從類別中獲取隨機問題
         function getRandomQuestions(category, count = 3) {
             const questions = [...questionTemplates[category]];
             const selected = [];
@@ -476,63 +521,76 @@
             return selected;
         }
 
-        // Generate interview questions
+        // 生成面試題目
         function generateQuestions(schoolId) {
-            // Show loading indicator
+            // 顯示加載指示器
             loadingIndicator.style.display = 'block';
             questionsOutput.style.display = 'none';
             
-            // Simulate loading time
+            // 模擬加載時間
             setTimeout(() => {
                 const school = schoolsData.schools.find(s => s.id == schoolId);
                 
                 if (!school) {
-                    alert("School not found. Please select a valid school.");
+                    alert("未找到學校。請選擇有效的學校。");
                     loadingIndicator.style.display = 'none';
                     return;
                 }
                 
-                // Hide "no school" message
+                // 隱藏"無學校"信息
                 noSchoolMessage.style.display = 'none';
                 
-                // Generate questions HTML
+                // 生成問題HTML
                 let html = `
+                    <div class="school-name-display">
+                        <div class="english-name">${school.name}</div>
+                        <div class="chinese-name">${school.chineseName}</div>
+                    </div>
+                    
                     <div class="section">
                         <div class="section-title">
                             <i class="fas fa-school"></i>
-                            <h3>School Details: ${school.name}</h3>
+                            <h3>學校詳情</h3>
                         </div>
                         <div class="school-details">
                             <div class="detail-item">
-                                <div class="detail-label">School Type</div>
+                                <div class="detail-label">學校類型</div>
                                 <div class="detail-value">${school.type}</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Religion</div>
+                                <div class="detail-label">宗教背景</div>
                                 <div class="detail-value">${school.religion}</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Gender</div>
+                                <div class="detail-label">性別</div>
                                 <div class="detail-value">${school.gender}</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">District</div>
+                                <div class="detail-label">地區</div>
                                 <div class="detail-value">${school.district}</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Medium of Instruction</div>
+                                <div class="detail-label">教學語言</div>
                                 <div class="detail-value">${school.language}</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Specialties</div>
+                                <div class="detail-label">學校特色</div>
                                 <div class="detail-value">${school.specialty}</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Website</div>
+                                <div class="detail-label">創校年份</div>
+                                <div class="detail-value">${school.established || '資料未提供'}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">學生人數</div>
+                                <div class="detail-value">${school.studentCount || '資料未提供'}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">學校網站</div>
                                 <div class="detail-value">${school.website}</div>
                             </div>
                             <div class="detail-item">
-                                <div class="detail-label">Phone</div>
+                                <div class="detail-label">聯絡電話</div>
                                 <div class="detail-value">${school.phone}</div>
                             </div>
                         </div>
@@ -541,13 +599,14 @@
                     <div class="section">
                         <div class="section-title">
                             <i class="fas fa-language"></i>
-                            <h3>Chinese Interview Questions</h3>
+                            <h3>中文面試問題</h3>
                         </div>
                         <ul class="question-list">
                 `;
                 
-                // Add Chinese questions
-                const chineseQuestions = getRandomQuestions('chinese', 4);
+                // 添加中文問題（根據學校特點調整數量）
+                const chineseCount = school.language === 'Chinese' ? 5 : 4;
+                const chineseQuestions = getRandomQuestions('chinese', chineseCount);
                 chineseQuestions.forEach(question => {
                     html += `<li>${question}</li>`;
                 });
@@ -559,13 +618,14 @@
                     <div class="section">
                         <div class="section-title">
                             <i class="fas fa-language"></i>
-                            <h3>English Interview Questions</h3>
+                            <h3>英文面試問題</h3>
                         </div>
                         <ul class="question-list">
                 `;
                 
-                // Add English questions
-                const englishQuestions = getRandomQuestions('english', 4);
+                // 添加英文問題（根據學校特點調整數量）
+                const englishCount = school.language === 'English' ? 5 : 4;
+                const englishQuestions = getRandomQuestions('english', englishCount);
                 englishQuestions.forEach(question => {
                     html += `<li>${question}</li>`;
                 });
@@ -577,12 +637,12 @@
                     <div class="section">
                         <div class="section-title">
                             <i class="fas fa-calculator"></i>
-                            <h3>Mathematics Interview Questions</h3>
+                            <h3>數學面試問題</h3>
                         </div>
                         <ul class="question-list">
                 `;
                 
-                // Add Math questions
+                // 添加數學問題
                 const mathQuestions = getRandomQuestions('math', 3);
                 mathQuestions.forEach(question => {
                     html += `<li>${question}</li>`;
@@ -595,12 +655,12 @@
                     <div class="section">
                         <div class="section-title">
                             <i class="fas fa-users"></i>
-                            <h3>Manner & Personal Qualities Questions</h3>
+                            <h3>品行與個人素質問題</h3>
                         </div>
                         <ul class="question-list">
                 `;
                 
-                // Add Manner questions
+                // 添加品行問題
                 const mannerQuestions = getRandomQuestions('manner', 4);
                 mannerQuestions.forEach(question => {
                     html += `<li>${question}</li>`;
@@ -609,34 +669,105 @@
                 html += `
                         </ul>
                     </div>
+                    
+                    <div class="section highlight">
+                        <div class="section-title">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>學校特定問題建議</h3>
+                        </div>
+                        <p>針對 ${school.chineseName} 的特色，建議準備以下問題：</p>
+                        <ul class="question-list">
                 `;
                 
-                // Update the DOM
+                // 根據學校特色添加特定問題
+                const specialtyQuestions = generateSpecialtyQuestions(school);
+                specialtyQuestions.forEach(question => {
+                    html += `<li>${question}</li>`;
+                });
+                
+                html += `
+                        </ul>
+                    </div>
+                `;
+                
+                // 更新DOM
                 questionsOutput.innerHTML = html;
                 questionsOutput.style.display = 'block';
                 loadingIndicator.style.display = 'none';
                 
-                // Scroll to results
+                // 滾動到結果區域
                 questionsOutput.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 800); // Simulate loading delay
+            }, 800); // 模擬加載延遲
         }
 
-        // Search schools
+        // 根據學校特色生成特定問題
+        function generateSpecialtyQuestions(school) {
+            const questions = [];
+            
+            // 根據學校名稱和特色生成問題
+            if (school.name.includes("Ying Wa") || school.chineseName.includes("英華")) {
+                questions.push("你對英華書院的歷史和傳統有多少了解？");
+                questions.push("英華書院以STEM教育聞名，你對哪個科學領域特別感興趣？");
+            }
+            
+            if (school.name.includes("St. Paul's") || school.chineseName.includes("聖保羅")) {
+                questions.push("聖保羅男女中學以學術卓越著稱，你如何應對學術挑戰？");
+                questions.push("你認為男女同校教育有什麼優勢？");
+            }
+            
+            if (school.chineseName.includes("陳瑞芝")) {
+                questions.push("你對宣道會陳瑞芝紀念中學的基督教教育理念有什麼看法？");
+                questions.push("你如何參與社區服務活動？");
+            }
+            
+            if (school.chineseName.includes("董玉娣")) {
+                questions.push("保良局董玉娣中學注重科技教育，你對哪些科技領域感興趣？");
+                questions.push("你如何看待體育在學生發展中的重要性？");
+            }
+            
+            // 根據學校特色生成通用問題
+            if (school.specialty.includes("Science") || school.specialty.includes("STEM")) {
+                questions.push("你對科學有什麼特別的興趣？");
+            }
+            
+            if (school.specialty.includes("Music") || school.specialty.includes("Arts")) {
+                questions.push("你有哪些藝術或音樂方面的才能？");
+            }
+            
+            if (school.specialty.includes("Sports")) {
+                questions.push("你參與哪些體育活動？");
+            }
+            
+            if (school.specialty.includes("Leadership")) {
+                questions.push("請分享一次你展現領導能力的經歷。");
+            }
+            
+            // 確保至少有3個問題
+            while (questions.length < 3) {
+                questions.push(`你為什麼認為自己適合就讀${school.chineseName}？`);
+                questions.push(`你對${school.chineseName}有什麼期望？`);
+            }
+            
+            return questions.slice(0, 4); // 返回最多4個問題
+        }
+
+        // 搜尋學校
         function searchSchools(query) {
             const normalizedQuery = query.toLowerCase().trim();
             
-            // Clear current options
-            schoolSelect.innerHTML = '<option value="">-- Select a school --</option>';
+            // 清空當前選項
+            schoolSelect.innerHTML = '<option value="">-- 請選擇學校 --</option>';
             
-            // Filter and add matching schools
+            // 篩選並添加匹配的學校
             const matchedSchools = schoolsData.schools.filter(school => 
-                school.name.toLowerCase().includes(normalizedQuery)
+                school.name.toLowerCase().includes(normalizedQuery) ||
+                school.chineseName.toLowerCase().includes(normalizedQuery)
             );
             
             if (matchedSchools.length === 0) {
                 const option = document.createElement('option');
                 option.value = "";
-                option.textContent = "No schools found";
+                option.textContent = "未找到相關學校";
                 schoolSelect.appendChild(option);
                 return;
             }
@@ -645,21 +776,28 @@
                 const option = document.createElement('option');
                 option.value = school.id;
                 option.textContent = school.name;
+                
+                // 添加中文名稱顯示
+                const chineseSpan = document.createElement('span');
+                chineseSpan.className = 'option-chinese';
+                chineseSpan.textContent = school.chineseName;
+                option.appendChild(chineseSpan);
+                
                 schoolSelect.appendChild(option);
             });
             
-            // Auto-select if only one match
+            // 如果只有一個匹配項，自動選擇
             if (matchedSchools.length === 1) {
                 schoolSelect.value = matchedSchools[0].id;
             }
         }
 
-        // Event Listeners
+        // 事件監聽器
         generateBtn.addEventListener('click', () => {
             const selectedSchoolId = schoolSelect.value;
             
             if (!selectedSchoolId) {
-                alert("Please select a school first.");
+                alert("請先選擇一所學校。");
                 return;
             }
             
@@ -667,6 +805,11 @@
         });
 
         randomBtn.addEventListener('click', () => {
+            if (!schoolsData || schoolsData.schools.length === 0) {
+                alert("學校數據尚未加載完成，請稍候再試。");
+                return;
+            }
+            
             const randomIndex = Math.floor(Math.random() * schoolsData.schools.length);
             const randomSchool = schoolsData.schools[randomIndex];
             
@@ -678,32 +821,11 @@
             searchSchools(e.target.value);
         });
 
-        // Initialize the app
+        // 初始化應用
         document.addEventListener('DOMContentLoaded', () => {
-            initializeSchoolDropdown();
-            
-            // Generate questions for a random school on page load
-            setTimeout(() => {
-                const randomIndex = Math.floor(Math.random() * schoolsData.schools.length);
-                schoolSelect.value = schoolsData.schools[randomIndex].id;
-                generateQuestions(schoolsData.schools[randomIndex].id);
-            }, 1000);
+            // 加載學校數據
+            loadSchoolsData();
         });
-
-        // For GitHub Pages hosting, we would normally load the JSON file like this:
-        /*
-        fetch('schools.json')
-            .then(response => response.json())
-            .then(data => {
-                schoolsData = data;
-                initializeSchoolDropdown();
-            })
-            .catch(error => {
-                console.error('Error loading schools data:', error);
-                // Fall back to embedded data
-                initializeSchoolDropdown();
-            });
-        */
     </script>
 </body>
 </html>
