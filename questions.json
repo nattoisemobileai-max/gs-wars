@@ -12,16 +12,20 @@
     "你如何平衡中文學習和其他學科的關係？"
   ],
   "english": [
-    "Tell us about yourself in three minutes.",
-    "Why do you want to study at our school?",
-    "What is your favorite book and why?",
-    "How do you improve your English outside of school?",
-    "Describe a challenge you have overcome.",
-    "What are your strengths and weaknesses?",
-    "Where do you see yourself in five years?",
-    "How do you handle pressure and stress?",
-    "What extracurricular activities are you interested in?",
-    "What qualities do you think are important for a student at our school?"
+    "[FW] What is your name? Which school do you come from? / Please do you want to get into this school?",
+    "[FW] Please introduce your family",
+    "[FW] What are your favourite sports?",
+    "[FW] Why do you want to study in our school? / Why do you want to get into this school?" / Why do you choose our school?",
+    "[AI] Tell us about yourself in three minutes.",
+    "[AI] Why do you want to study at our school?",
+    "[AI] What is your favorite book and why?",
+    "[AI] How do you improve your English outside of school?",
+    "[AI] Describe a challenge you have overcome.",
+    "[AI] What are your strengths and weaknesses?",
+    "[AI] Where do you see yourself in five years?",
+    "[AI] How do you handle pressure and stress?",
+    "[AI] What extracurricular activities are you interested in?",
+    "[AI] What qualities do you think are important for a student at our school?"
   ],
   "math": [
     "What do you find most interesting about mathematics?",
@@ -53,8 +57,8 @@
       "英華書院以STEM教育聞名，你對哪個科學領域特別感興趣？",
       "你如何平衡學術成績和課外活動？",
       "你認為男校教育有什麼特點和優勢？",
-      "What is your favourite breakfast and why?",
-      "What would do if your sibilings did not have breakfast before going to school?"
+      "[WY] What is your favourite breakfast and why?",
+      "[WY] What would do if your sibilings did not have breakfast before going to school?"
     ],
     "聖保羅男女中學": [
       "聖保羅男女中學以學術卓越著稱，你如何應對學術挑戰？",
