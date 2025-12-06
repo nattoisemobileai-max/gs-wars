@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港中學面試題目生成器</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <style>
+        /* 折疊/展開功能樣式 */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 15px 20px;
+            border-radius: 8px;
+            background: #f8fafc;
+            border: 1px solid #eaeaea;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .section-header:hover {
+            background: #f0f4f8;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .section-header h3 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .toggle-icon {
+            transition: transform 0.3s ease;
+            color: #4a6491;
+            font-size: 1.1rem;
+        }
+        
+        .collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+        
+        .section-content {
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+            max-height: 2000px;
+            opacity: 1;
+            padding: 15px;
+        }
+        
+        .collapsed + .section-content {
+            max-height: 0;
+            opacity: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            overflow: hidden;
+        }
+        
+        .section-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #eaeaea;
+        }
+        
+        .section-controls button {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .section-controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* 動畫效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .question-list li {
+            animation: fadeIn 0.5s ease;
+        }
+        
+        /* 問題列表樣式調整 */
+        .section .question-list {
+            margin-top: 0;
+            padding-top: 0;
+        }
+        
+        /* 調整原始section樣式以兼容折疊功能 */
+        .section > .section-content {
+            padding: 0;
+            border-left: none;
+            background: transparent;
+        }
+        
+        .section > .section-header + .section-content {
+            padding: 0 15px 15px 15px;
+        }
+        
+        /* 響應式調整 */
+        @media (max-width: 768px) {
+            .section-controls {
+                flex-direction: column;
+            }
+            
+            .section-controls button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .section-header h3 {
+                font-size: 1.1rem;
+            }
+            
+            .section-header {
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-graduation-cap"></i> 香港中學面試題目生成器</h1>
+            <p class="subtitle">專為指定中學定制面試準備題目</p>
+            <p class="subtitle">Secondary School Interview Question Generator</p>
+        </header>
+        
+        <div class="content">
+            <div class="selection-panel">
+                <h2><i class="fas fa-cog"></i> 設定選項</h2>
+                
+                <div class="form-group">
+                    <label for="schoolSelect"><i class="fas fa-school"></i> 選擇學校：</label>
+                    <select id="schoolSelect">
+                        <option value="">-- 請選擇學校 --</option>
+                    </select>
+                    <div class="school-count" id="schoolCount">載入中...</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="questionTypeSelect"><i class="fas fa-question-circle"></i> 選擇問題類型：</label>
+                    <select id="questionTypeSelect">
+                        <option value="all">全部類型</option>
+                        <option value="chinese">中文</option>
+                        <option value="english">English</option>
+                        <option value="math">數學（心算）</option>
+                        <option value="current">時事</option>
+                        <option value="science">科學</option>
+                        <option value="creative">創意</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="schoolSearch"><i class="fas fa-search"></i> 搜尋學校：</label>
+                    <input type="text" id="schoolSearch" placeholder="輸入學校中文或英文名稱...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="questionCount">每類問題數量：</label>
+                    <input type="number" id="questionCount" min="1" max="10" value="4" placeholder="輸入1-10之間的數字">
+                </div>
+                
+                <button class="btn random-btn" id="randomBtn">
+                    <i class="fas fa-random"></i> 隨機生成
+                </button>
+                
+                <button class="btn" id="generateBtn">
+                    <i class="fas fa-magic"></i> 生成面試題目
+                </button>
+                
+                <button class="btn view-history-btn" id="viewHistoryBtn" style="background: linear-gradient(to right, #9b59b6, #8e44ad); margin-top: 10px;">
+                    <i class="fas fa-history"></i> 查看練習記錄
+                </button>
+                
+                <div class="loading" id="loadingIndicator">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>正在生成題目...</p>
+                </div>
+                
+                <div class="section highlight" id="schoolsSection">
+                    <div class="section-header" onclick="toggleSection('schoolsSection')">
+                        <h3>
+                            <i class="fas fa-info-circle"></i>
+                            支援學校
+                        </h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="section-content">
+                        <p>本工具專為以下五所中學定制：</p>
+                        <ul class="question-list">
+                            <li>英華書院 (Ying Wa College)</li>
+                            <li>聖保羅男女中學 (St. Paul's Co-educational College)</li>
+                            <li>宣道會陳瑞芝紀念中學 (Alliance Church Chan Sui Ki College)</li>
+                            <li>保良局董玉娣中學 (Po Leung Kuk Tang Yuk Tien College)</li>
+                            <li>香港青年會李兆基書院 (Hong Kong Federation of Youth Groups Lee Shau Kee College)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section" id="instructionsSection">
+                    <div class="section-header" onclick="toggleSection('instructionsSection')">
+                        <h3>
+                            <i class="fas fa-lightbulb"></i>
+                            使用說明
+                        </h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="section-content">
+                        <ol class="instruction-list">
+                            <li>選擇學校和問題類型</li>
+                            <li>設定每類問題數量</li>
+                            <li>點擊"生成面試題目"</li>
+                            <li>點擊問題旁邊的"練習"按鈕記錄進度</li>
+                            <li>查看練習記錄追蹤學習進度</li>
+                            <li>點擊區塊標題可展開/收合內容</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="results-panel">
+                <h2><i class="fas fa-file-alt"></i> 面試題目與學校資料</h2>
+                
+                <div id="resultsContainer">
+                    <div class="no-school" id="noSchoolMessage">
+                        <i class="fas fa-info-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <h3>請選擇學校開始</h3>
+                        <p>選擇學校和問題類型，然後點擊"生成面試題目"按鈕。</p>
+                        
+                        <div class="section" id="quickGuideSection">
+                            <div class="section-header" onclick="toggleSection('quickGuideSection')">
+                                <h3>
+                                    <i class="fas fa-graduation-cap"></i>
+                                    問題類型說明
+                                </h3>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="section-content">
+                                <div class="guide-grid">
+                                    <div class="guide-item">
+                                        <i class="fas fa-language"></i>
+                                        <div>
+                                            <strong>中文</strong>
+                                            <p>中文語言能力與表達</p>
+                                        </div>
+                                    </div>
+                                    <div class="guide-item">
+                                        <i class="fas fa-language"></i>
+                                        <div>
+                                            <strong>English</strong>
+                                            <p>英語溝通與理解</p>
+                                        </div>
+                                    </div>
+                                    <div class="guide-item">
+                                        <i class="fas fa-calculator"></i>
+                                        <div>
+                                            <strong>數學（心算）</strong>
+                                            <p>數學思維與心算能力</p>
+                                        </div>
+                                    </div>
+                                    <div class="guide-item">
+                                        <i class="fas fa-newspaper"></i>
+                                        <div>
+                                            <strong>時事</strong>
+                                            <p>對當前社會時事的認識與見解</p>
+                                        </div>
+                                    </div>
+                                    <div class="guide-item">
+                                        <i class="fas fa-flask"></i>
+                                        <div>
+                                            <strong>科學</strong>
+                                            <p>科學知識與探究精神</p>
+                                        </div>
+                                    </div>
+                                    <div class="guide-item">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <div>
+                                            <strong>創意</strong>
+                                            <p>創意思維與解決問題能力</p>
+                                        </div>
+                                    </div>
+                                    <div class="guide-item">
+                                        <i class="fas fa-question-circle"></i>
+                                        <div>
+                                            <strong>其他</strong>
+                                            <p>綜合素質與個人發展</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="section highlight" id="featuresSection">
+                            <div class="section-header" onclick="toggleSection('featuresSection')">
+                                <h3>
+                                    <i class="fas fa-star"></i>
+                                    特色功能
+                                </h3>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="section-content">
+                                <ul class="question-list">
+                                    <li><i class="fas fa-check-circle"></i> 每題旁有"練習"按鈕記錄進度</li>
+                                    <li><i class="fas fa-history"></i> 自動保存練習記錄</li>
+                                    <li><i class="fas fa-chart-line"></i> 練習統計與進度追蹤</li>
+                                    <li><i class="fas fa-random"></i> 一鍵隨機生成題目</li>
+                                    <li><i class="fas fa-expand-alt"></i> 可折疊/展開內容區塊</li>
+                                    <li><i class="fas fa-mobile-alt"></i> 響應式設計支援手機</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="questionsOutput" style="display: none;">
+                        <!-- 區塊控制按鈕 -->
+                        <div class="section-controls">
+                            <button onclick="expandAllSections()">
+                                <i class="fas fa-expand-alt"></i> 展開全部
+                            </button>
+                            <button onclick="collapseAllSections()">
+                                <i class="fas fa-compress-alt"></i> 收合全部
+                            </button>
+                        </div>
+                        
+                        <!-- 題目將在這裡生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>此工具為中學入學面試生成練習題目。題目僅供練習參考，實際面試問題可能有所不同。</p>
+            <p>建議結合學校官方資料和個人經歷進行面試準備。</p>
+            <p>託管於 GitHub Pages | 為學生製作 <i class="fas fa-heart" style="color: #e74c3c;"></i></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // 折疊/展開功能 - 簡化版本
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (!section) return;
+            
+            const header = section.querySelector('.section-header');
+            const content = section.querySelector('.section-content');
+            
+            if (header && content) {
+                header.classList.toggle('collapsed');
+            }
+        }
+        
+        function expandAllSections() {
+            document.querySelectorAll('.section-header').forEach(header => {
+                header.classList.remove('collapsed');
+            });
+        }
+        
+        function collapseAllSections() {
+            document.querySelectorAll('.section-header').forEach(header => {
+                header.classList.add('collapsed');
+            });
+        }
+        
+        // 初始化所有折疊區塊
+        document.addEventListener('DOMContentLoaded', function() {
+            // 預設展開所有區塊
+            expandAllSections();
+            
+            // 為動態生成的內容添加折疊功能
+            setupDynamicContentCollapse();
+        });
+        
+        // 為動態生成的內容設置折疊功能
+        function setupDynamicContentCollapse() {
+            // 監聽動態內容的變化
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.addedNodes.length) {
+                        addCollapseToGeneratedContent();
+                    }
+                });
+            });
+            
+            // 監聽問題輸出區域的變化
+            const questionsOutput = document.getElementById('questionsOutput');
+            if (questionsOutput) {
+                observer.observe(questionsOutput, { childList: true, subtree: true });
+            }
+        }
+        
+        // 為生成的內容添加折疊功能
+        function addCollapseToGeneratedContent() {
+            const questionSections = document.querySelectorAll('#questionsOutput .section');
+            
+            questionSections.forEach((section, index) => {
+                // 如果已經有折疊功能，跳過
+                if (section.querySelector('.section-header')) return;
+                
+                const title = section.querySelector('.section-title');
+                const content = section.querySelector('.question-list, .school-details, .practice-summary, .action-buttons');
+                
+                if (title && content) {
+                    // 創建唯一的ID
+                    const sectionId = 'dynamic-section-' + Date.now() + '-' + index;
+                    
+                    // 創建新的折疊標頭
+                    const header = document.createElement('div');
+                    header.className = 'section-header';
+                    header.setAttribute('onclick', `toggleSection('${sectionId}')`);
+                    
+                    const titleText = title.querySelector('h3')?.textContent || '未命名區塊';
+                    const icon = title.querySelector('i')?.className || 'fas fa-question-circle';
+                    
+                    header.innerHTML = `
+                        <h3>
+                            <i class="${icon}"></i>
+                            ${titleText}
+                        </h3>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    `;
+                    
+                    // 包裹內容
+                    const contentWrapper = document.createElement('div');
+                    contentWrapper.className = 'section-content';
+                    contentWrapper.id = sectionId + '-content';
+                    
+                    // 將內容移到包裹器中
+                    while (content.firstChild) {
+                        contentWrapper.appendChild(content.firstChild);
+                    }
+                    
+                    // 替換原始內容
+                    section.innerHTML = '';
+                    section.appendChild(header);
+                    section.appendChild(contentWrapper);
+                    section.id = sectionId;
+                    
+                    // 移除原來的標題元素
+                    title.remove();
+                }
+            });
+        }
+        
+        // 修改script.js中的generateQuestions函數，在最後調用addCollapseToGeneratedContent
+        // 保存原來的generateQuestions函數引用
+        const originalGenerateQuestions = window.generateQuestions;
+        
+        if (originalGenerateQuestions) {
+            window.generateQuestions = function() {
+                // 調用原來的函數
+                originalGenerateQuestions.apply(this, arguments);
+                
+                // 在動態內容生成後添加折疊功能
+                setTimeout(() => {
+                    addCollapseToGeneratedContent();
+                }, 600); // 等待動畫完成
+            };
+        }
+    </script>
+</body>
+</html>
