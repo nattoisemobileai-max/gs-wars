@@ -1,29 +1,709 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>地球村守衛者 - 戰爭與和平</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secondary School Interview Question Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f9ff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .selection-panel {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .results-panel {
+            flex: 2;
+            min-width: 300px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #3a506b;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        select:focus, input:focus {
+            border-color: #4a6491;
+            outline: none;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #4a6491, #2c3e50);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(to right, #3a5478, #1f2d3d);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f8fafc;
+            border-left: 5px solid #4a6491;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: #4a6491;
+        }
+        
+        .question-list {
+            list-style-type: none;
+        }
+        
+        .question-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .question-list li:before {
+            content: "•";
+            color: #4a6491;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        .school-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .detail-item {
+            background-color: white;
+            padding: 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #3a506b;
+            font-size: 0.9rem;
+        }
+        
+        .detail-value {
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+        
+        .no-school {
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .random-btn {
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            margin-bottom: 10px;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #4a6491;
+        }
+        
+        .loading i {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="app-container">
-        <section id="welcome-screen">
-            <h1>歡迎 Smart Boy！</h1>
-            <p>準備好接受挑戰，守護和平了嗎？</p>
-            <button onclick="startApp()">開始挑戰</button>
-        </section>
-
-        <section id="game-screen">
-            <div id="progress-bar"></div>
-            <div id="question-display"></div>
-            <div id="options-container"></div>
-            <button id="check-button" disabled>檢查答案</button>
-        </section>
-
-        <section id="leaderboard-screen" class="hidden">
-            </section>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-graduation-cap"></i> Secondary School Interview Question Generator</h1>
+            <p class="subtitle">Prepare for your school interviews with customized questions based on school profiles</p>
+        </header>
+        
+        <div class="content">
+            <div class="selection-panel">
+                <h2><i class="fas fa-school"></i> Select a School</h2>
+                
+                <div class="form-group">
+                    <label for="schoolSelect"><i class="fas fa-list"></i> Choose a Secondary School:</label>
+                    <select id="schoolSelect">
+                        <option value="">-- Select a school --</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="schoolSearch"><i class="fas fa-search"></i> Or search for a school:</label>
+                    <input type="text" id="schoolSearch" placeholder="Type school name...">
+                </div>
+                
+                <button class="btn random-btn" id="randomBtn">
+                    <i class="fas fa-random"></i> Generate Random School Questions
+                </button>
+                
+                <button class="btn" id="generateBtn">
+                    <i class="fas fa-magic"></i> Generate Interview Questions
+                </button>
+                
+                <div class="loading" id="loadingIndicator">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Generating questions...</p>
+                </div>
+            </div>
+            
+            <div class="results-panel">
+                <h2><i class="fas fa-file-alt"></i> Interview Questions</h2>
+                
+                <div id="resultsContainer">
+                    <div class="no-school" id="noSchoolMessage">
+                        <i class="fas fa-info-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <h3>Select a school to begin</h3>
+                        <p>Choose a secondary school from the dropdown or use the search to find a specific school.</p>
+                    </div>
+                    
+                    <div id="questionsOutput" style="display: none;">
+                        <!-- Questions will be generated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>This tool generates sample interview questions for secondary school admissions. Questions are for practice purposes only.</p>
+            <p>Hosted on GitHub Pages | Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for students</p>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // School data (in a real scenario, this would be loaded from a JSON file)
+        const schoolsData = {
+            "schools": [
+                {
+                    "id": 1,
+                    "name": "St. Mary's College",
+                    "type": "Aided",
+                    "religion": "Catholic",
+                    "gender": "Co-ed",
+                    "district": "Central & Western",
+                    "language": "English",
+                    "specialty": "Science, Music",
+                    "website": "www.stmary.edu.hk",
+                    "phone": "2546-1234"
+                },
+                {
+                    "id": 2,
+                    "name": "Queen's Secondary School",
+                    "type": "Government",
+                    "religion": "None",
+                    "gender": "Girls",
+                    "district": "Wan Chai",
+                    "language": "English",
+                    "specialty": "Languages, Arts",
+                    "website": "www.queensschool.edu.hk",
+                    "phone": "2877-5678"
+                },
+                {
+                    "id": 3,
+                    "name": "Kowloon Technical School",
+                    "type": "Government",
+                    "religion": "None",
+                    "gender": "Boys",
+                    "district": "Kowloon City",
+                    "language": "Chinese",
+                    "specialty": "STEM, Technology",
+                    "website": "www.kts.edu.hk",
+                    "phone": "2334-9876"
+                },
+                {
+                    "id": 4,
+                    "name": "Hong Kong International School",
+                    "type": "Private",
+                    "religion": "None",
+                    "gender": "Co-ed",
+                    "district": "Southern",
+                    "language": "English",
+                    "specialty": "IB Programme, Sports",
+                    "website": "www.hkis.edu.hk",
+                    "phone": "2812-5000"
+                },
+                {
+                    "id": 5,
+                    "name": "Sacred Heart Canossian School",
+                    "type": "Aided",
+                    "religion": "Catholic",
+                    "gender": "Girls",
+                    "district": "Yau Tsim Mong",
+                    "language": "English",
+                    "specialty": "Music, Community Service",
+                    "website": "www.shcc.edu.hk",
+                    "phone": "2385-4321"
+                },
+                {
+                    "id": 6,
+                    "name": "Diocesan Boys' School",
+                    "type": "Aided",
+                    "religion": "Anglican",
+                    "gender": "Boys",
+                    "district": "Kowloon City",
+                    "language": "English",
+                    "specialty": "Sports, Leadership",
+                    "website": "www.dbs.edu.hk",
+                    "phone": "2711-5191"
+                },
+                {
+                    "id": 7,
+                    "name": "True Light Middle School",
+                    "type": "Aided",
+                    "religion": "Christian",
+                    "gender": "Girls",
+                    "district": "Kowloon Tong",
+                    "language": "Chinese",
+                    "specialty": "Science, Visual Arts",
+                    "website": "www.truelight.edu.hk",
+                    "phone": "2337-0123"
+                },
+                {
+                    "id": 8,
+                    "name": "Wah Yan College, Hong Kong",
+                    "type": "Aided",
+                    "religion": "Catholic",
+                    "gender": "Boys",
+                    "district": "Wan Chai",
+                    "language": "English",
+                    "specialty": "Debating, Mathematics",
+                    "website": "www.wahyan.edu.hk",
+                    "phone": "2572-2251"
+                }
+            ]
+        };
+
+        // Interview question templates
+        const questionTemplates = {
+            chinese: [
+                "請用三分鐘介紹你自己。",
+                "你為什麼選擇我們學校？",
+                "你最喜歡的中文課文是什麼？為什麼？",
+                "你平時如何提升你的中文寫作能力？",
+                "你最近讀過的一本中文書是什麼？有什麼感想？",
+                "你如何看待中文在現代社會的重要性？",
+                "請用中文描述你的一次難忘經歷。"
+            ],
+            english: [
+                "Tell us about yourself in three minutes.",
+                "Why do you want to study at our school?",
+                "What is your favorite book and why?",
+                "How do you improve your English outside of school?",
+                "Describe a challenge you have overcome.",
+                "What are your strengths and weaknesses?",
+                "Where do you see yourself in five years?"
+            ],
+            math: [
+                "What do you find most interesting about mathematics?",
+                "Explain how you would solve a difficult math problem.",
+                "How do you apply mathematics in your daily life?",
+                "What is your favorite mathematical concept and why?",
+                "Describe a time when you used logic to solve a problem.",
+                "How would you explain fractions to a younger student?",
+                "What mathematical achievement are you most proud of?"
+            ],
+            manner: [
+                "How would you handle a disagreement with a classmate?",
+                "Describe a time when you showed leadership.",
+                "What does good teamwork mean to you?",
+                "How do you handle stress during exams?",
+                "What would you do if you saw someone being bullied?",
+                "How do you balance schoolwork and extracurricular activities?",
+                "What qualities make a good student in our school?"
+            ]
+        };
+
+        // DOM Elements
+        const schoolSelect = document.getElementById('schoolSelect');
+        const schoolSearch = document.getElementById('schoolSearch');
+        const generateBtn = document.getElementById('generateBtn');
+        const randomBtn = document.getElementById('randomBtn');
+        const questionsOutput = document.getElementById('questionsOutput');
+        const noSchoolMessage = document.getElementById('noSchoolMessage');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+
+        // Initialize the school dropdown
+        function initializeSchoolDropdown() {
+            schoolsData.schools.forEach(school => {
+                const option = document.createElement('option');
+                option.value = school.id;
+                option.textContent = school.name;
+                schoolSelect.appendChild(option);
+            });
+        }
+
+        // Get random questions from a category
+        function getRandomQuestions(category, count = 3) {
+            const questions = [...questionTemplates[category]];
+            const selected = [];
+            
+            for (let i = 0; i < count && questions.length > 0; i++) {
+                const randomIndex = Math.floor(Math.random() * questions.length);
+                selected.push(questions[randomIndex]);
+                questions.splice(randomIndex, 1);
+            }
+            
+            return selected;
+        }
+
+        // Generate interview questions
+        function generateQuestions(schoolId) {
+            // Show loading indicator
+            loadingIndicator.style.display = 'block';
+            questionsOutput.style.display = 'none';
+            
+            // Simulate loading time
+            setTimeout(() => {
+                const school = schoolsData.schools.find(s => s.id == schoolId);
+                
+                if (!school) {
+                    alert("School not found. Please select a valid school.");
+                    loadingIndicator.style.display = 'none';
+                    return;
+                }
+                
+                // Hide "no school" message
+                noSchoolMessage.style.display = 'none';
+                
+                // Generate questions HTML
+                let html = `
+                    <div class="section">
+                        <div class="section-title">
+                            <i class="fas fa-school"></i>
+                            <h3>School Details: ${school.name}</h3>
+                        </div>
+                        <div class="school-details">
+                            <div class="detail-item">
+                                <div class="detail-label">School Type</div>
+                                <div class="detail-value">${school.type}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Religion</div>
+                                <div class="detail-value">${school.religion}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Gender</div>
+                                <div class="detail-value">${school.gender}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">District</div>
+                                <div class="detail-value">${school.district}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Medium of Instruction</div>
+                                <div class="detail-value">${school.language}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Specialties</div>
+                                <div class="detail-value">${school.specialty}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Website</div>
+                                <div class="detail-value">${school.website}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Phone</div>
+                                <div class="detail-value">${school.phone}</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="section-title">
+                            <i class="fas fa-language"></i>
+                            <h3>Chinese Interview Questions</h3>
+                        </div>
+                        <ul class="question-list">
+                `;
+                
+                // Add Chinese questions
+                const chineseQuestions = getRandomQuestions('chinese', 4);
+                chineseQuestions.forEach(question => {
+                    html += `<li>${question}</li>`;
+                });
+                
+                html += `
+                        </ul>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="section-title">
+                            <i class="fas fa-language"></i>
+                            <h3>English Interview Questions</h3>
+                        </div>
+                        <ul class="question-list">
+                `;
+                
+                // Add English questions
+                const englishQuestions = getRandomQuestions('english', 4);
+                englishQuestions.forEach(question => {
+                    html += `<li>${question}</li>`;
+                });
+                
+                html += `
+                        </ul>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="section-title">
+                            <i class="fas fa-calculator"></i>
+                            <h3>Mathematics Interview Questions</h3>
+                        </div>
+                        <ul class="question-list">
+                `;
+                
+                // Add Math questions
+                const mathQuestions = getRandomQuestions('math', 3);
+                mathQuestions.forEach(question => {
+                    html += `<li>${question}</li>`;
+                });
+                
+                html += `
+                        </ul>
+                    </div>
+                    
+                    <div class="section">
+                        <div class="section-title">
+                            <i class="fas fa-users"></i>
+                            <h3>Manner & Personal Qualities Questions</h3>
+                        </div>
+                        <ul class="question-list">
+                `;
+                
+                // Add Manner questions
+                const mannerQuestions = getRandomQuestions('manner', 4);
+                mannerQuestions.forEach(question => {
+                    html += `<li>${question}</li>`;
+                });
+                
+                html += `
+                        </ul>
+                    </div>
+                `;
+                
+                // Update the DOM
+                questionsOutput.innerHTML = html;
+                questionsOutput.style.display = 'block';
+                loadingIndicator.style.display = 'none';
+                
+                // Scroll to results
+                questionsOutput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 800); // Simulate loading delay
+        }
+
+        // Search schools
+        function searchSchools(query) {
+            const normalizedQuery = query.toLowerCase().trim();
+            
+            // Clear current options
+            schoolSelect.innerHTML = '<option value="">-- Select a school --</option>';
+            
+            // Filter and add matching schools
+            const matchedSchools = schoolsData.schools.filter(school => 
+                school.name.toLowerCase().includes(normalizedQuery)
+            );
+            
+            if (matchedSchools.length === 0) {
+                const option = document.createElement('option');
+                option.value = "";
+                option.textContent = "No schools found";
+                schoolSelect.appendChild(option);
+                return;
+            }
+            
+            matchedSchools.forEach(school => {
+                const option = document.createElement('option');
+                option.value = school.id;
+                option.textContent = school.name;
+                schoolSelect.appendChild(option);
+            });
+            
+            // Auto-select if only one match
+            if (matchedSchools.length === 1) {
+                schoolSelect.value = matchedSchools[0].id;
+            }
+        }
+
+        // Event Listeners
+        generateBtn.addEventListener('click', () => {
+            const selectedSchoolId = schoolSelect.value;
+            
+            if (!selectedSchoolId) {
+                alert("Please select a school first.");
+                return;
+            }
+            
+            generateQuestions(selectedSchoolId);
+        });
+
+        randomBtn.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * schoolsData.schools.length);
+            const randomSchool = schoolsData.schools[randomIndex];
+            
+            schoolSelect.value = randomSchool.id;
+            generateQuestions(randomSchool.id);
+        });
+
+        schoolSearch.addEventListener('input', (e) => {
+            searchSchools(e.target.value);
+        });
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeSchoolDropdown();
+            
+            // Generate questions for a random school on page load
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * schoolsData.schools.length);
+                schoolSelect.value = schoolsData.schools[randomIndex].id;
+                generateQuestions(schoolsData.schools[randomIndex].id);
+            }, 1000);
+        });
+
+        // For GitHub Pages hosting, we would normally load the JSON file like this:
+        /*
+        fetch('schools.json')
+            .then(response => response.json())
+            .then(data => {
+                schoolsData = data;
+                initializeSchoolDropdown();
+            })
+            .catch(error => {
+                console.error('Error loading schools data:', error);
+                // Fall back to embedded data
+                initializeSchoolDropdown();
+            });
+        */
+    </script>
 </body>
 </html>
